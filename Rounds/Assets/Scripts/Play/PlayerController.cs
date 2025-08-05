@@ -10,11 +10,14 @@ public class PlayerController : MonoBehaviour
     private bool jumpAble = false;
     Vector2 direction;
 
+    public Transform groundCheckTransform;
+    private bool grounded;
+
     private void FixedUpdate()
     {
-        Debug.Log(jumpAble);
         Vector2 vector = transform.position;
         Movement(vector);
+        UpdateGroundedStatus();
     }
 
     private void Movement(Vector2 vector)
@@ -33,23 +36,48 @@ public class PlayerController : MonoBehaviour
 
         if (jumpAble && Input.GetKey(KeyCode.Space))
         {
-            direction = direction.normalized * 200;
-            rb.AddForce(direction);
+            if (grounded)
+            {
+                vector.y += 150;
+            }
+            else if (!grounded)
+            {
+                vector.y += 130;
+                rb.AddForce(direction);
+            }
+            rb.AddForce(vector);
         }
+    }
+
+    private void UpdateGroundedStatus()
+    {
+        grounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.001f);
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        direction = collision.gameObject.transform.position - transform.position;
+        jumpAble = true;
+        Debug.Log("jump : " + jumpAble);
+        Debug.Log("ground : " + grounded);
+        if (!grounded)
+        {
+            direction = collision.gameObject.transform.position - transform.position;
+            direction = direction.normalized * (-100);
+        }
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        jumpAble = true;
+        if (grounded && !jumpAble)
+        {
+            jumpAble = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        jumpAble = false;
+         jumpAble = false;
+         Debug.Log("jump : " + jumpAble);
     }
 }
