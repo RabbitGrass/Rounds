@@ -236,6 +236,7 @@ Transform:
   m_Children:
   - {fileID: 1479208696}
   - {fileID: 1078313299}
+  - {fileID: 1448200771}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &444152444
@@ -286,8 +287,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 444152440}
-  speed: 13
+  speed: 5
+  jumpPower: 5
   groundCheckTransform: {fileID: 1078313299}
+  groundCheckLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  wallCheckTransform: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +397,7 @@ GameObject:
   - component: {fileID: 563407972}
   - component: {fileID: 563407971}
   - component: {fileID: 563407970}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,6 +547,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 444152443}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1448200770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1448200771}
+  m_Layer: 0
+  m_Name: wallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1448200771
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448200770}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.57, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 444152443}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1479208695
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +673,7 @@ GameObject:
   - component: {fileID: 1840183185}
   - component: {fileID: 1840183184}
   - component: {fileID: 1840183186}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
