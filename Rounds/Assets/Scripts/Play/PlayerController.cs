@@ -9,32 +9,41 @@ public class PlayerController : MonoBehaviour
     public float jumpPower;
 
     private bool jumpAble = false;
-    Vector2 direction;
 
     public Transform groundCheckTransform;
     public LayerMask groundCheckLayer;
     private bool grounded;
 
-    public Transform wallCheckTransform;
+    public Transform wallCheckRight;
+    public Transform wallCheckLeft;
     private bool isWall;
 
     private void Update()
     {
+        Debug.Log("벽 : " + isWall);
+        Debug.Log("점프 : " + jumpAble);
         if (jumpAble && Input.GetKeyDown(KeyCode.Space)) //GetKeyDown은 반드시 Update에서 써야한다.
         {
-            if (isWall)
+            if (isWall && !grounded)
             {
-                //vector.y += jumpPower;
-                //rb.AddForce(Vector2.);
+                //벽 점프: x는 벽 반대 방향, y는 위
+                float wallJumpDirection = transform.localScale.x > 0 ? -1 : 1;
+                Vector2 jumpDir = new Vector2(wallJumpDirection, 1).normalized;
+
+                //rb.velocity = Vector2.zero;//기존 속도 초기화
+                rb.AddForce(jumpDir * jumpPower, ForceMode2D.Impulse);
             }
-            rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            else if (grounded)
+            {
+                rb.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+
+            }
         }
     }
 
     private void FixedUpdate() //fixedUpdate는 주로 물리엔진과 연관이 된 애들만 넣는다.
     {
         float h = Input.GetAxis("Horizontal");
-        Debug.Log(jumpAble);
 
         Vector2 vector = rb.velocity;
 
@@ -48,7 +57,7 @@ public class PlayerController : MonoBehaviour
     private void UpdateJumpAbleStatus()
     {
         grounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.001f, groundCheckLayer);
-        isWall = Physics2D.OverlapCircle(groundCheckTransform.position, 0.1f, groundCheckLayer);
+        isWall = Physics2D.OverlapCircle(wallCheckRight.position, 0.01f, groundCheckLayer) || Physics2D.OverlapCircle(wallCheckRight.position, 0.01f, groundCheckLayer);
     }
 
     //private void OnCollisionEnter2D(Collision2D collision)
