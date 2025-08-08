@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public float speed;
+    public float speed; //3.5
     private float wallJumpSpeed;
     private float moveSpeed;
 
@@ -15,16 +15,18 @@ public class PlayerController : MonoBehaviour
     public float jumpPower;
     private float wallJumpPower;
 
-    private bool jumpAble = false;
+    private bool jumpAble = false; //점프 가능여부
 
-    public Transform groundCheckTransform;
+    public Transform groundCheckTransform;//땅 감지
     public LayerMask groundCheckLayer;
     private bool grounded;
 
-    public Transform wallCheckRight;
-    public Transform wallCheckLeft;
+    public Transform wallCheckRight;//오른쪽 벽 감지
+    public Transform wallCheckLeft; //왼쪽 벽 감지
     private bool isWallRight = false;
     private bool isWallLeft = false;
+
+    public int UserHp; //유저 체력, 기본값 10
 
     private void Start()
     {
