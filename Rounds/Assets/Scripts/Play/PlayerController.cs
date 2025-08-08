@@ -7,10 +7,13 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     public float speed;
     private float wallJumpSpeed;
+    private float moveSpeed;
+
     private bool isWallJumping = false;
     public float wallJumpDuration;
     private float wallJumpTimer = 0f;
     public float jumpPower;
+    private float wallJumpPower;
 
     private bool jumpAble = false;
 
@@ -25,7 +28,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        wallJumpSpeed = speed * 0.5f;
+        wallJumpSpeed = jumpPower * 0.5f;
+        wallJumpPower = jumpPower - 0.5f;
+        moveSpeed = speed;
     }
 
     private void Update()
@@ -53,7 +58,7 @@ public class PlayerController : MonoBehaviour
                 //rb.velocity = Vector2.zero;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
                 //Vector2 jumpDir = new Vector2(wallJumpDirection, 1).normalized;
                 //rb.AddForce(jumpDir * jumpPower, ForceMode2D.Impulse);
-                rb.velocity = new Vector2(wallJumpDirection * wallJumpSpeed, jumpPower);
+                rb.velocity = new Vector2(wallJumpDirection * wallJumpSpeed, wallJumpPower);
                 isWallJumping = true;
                 wallJumpTimer = wallJumpDuration;
             }
@@ -63,19 +68,25 @@ public class PlayerController : MonoBehaviour
         {
             wallJumpTimer -= Time.deltaTime;
             if (wallJumpTimer <= 0)
+            {
                 isWallJumping = false;
+            }
         }
     }
 
     private void FixedUpdate() //fixedUpdate는 주로 물리엔진과 연관이 된 애들만 넣는다.
     {
+        Debug.Log("grounded : " + grounded);
+        Debug.Log("WallJumping" + isWallJumping);
+        Debug.Log("Wall : " + isWallRight);
         float h = Input.GetAxis("Horizontal");
 
         Vector2 vector = rb.velocity;
-        vector.x = h * speed;
+        
+        vector.x = h * moveSpeed;
 
 
-        if ((!isWallRight && !isWallLeft && !isWallJumping) || grounded)
+        if(!isWallJumping)
             rb.velocity = vector;
 
         UpdateJumpAbleStatus();
@@ -86,10 +97,27 @@ public class PlayerController : MonoBehaviour
     private void UpdateJumpAbleStatus()
     {
         grounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.001f, groundCheckLayer);
-        isWallRight = Physics2D.OverlapCircle(wallCheckRight.position, 0.01f, groundCheckLayer);
-        isWallLeft = Physics2D.OverlapCircle(wallCheckLeft.position, 0.01f, groundCheckLayer);
+        isWallRight = Physics2D.OverlapCapsule(
+            wallCheckRight.position,                  // 중심
+            new Vector2(0.2f, 0.6f),                  // 캡슐 크기 (너비, 높이)
+            CapsuleDirection2D.Vertical,             // 방향: 세로로 길게
+            0f,                                       // 회전 없음
+            groundCheckLayer);                          // 감지 레이어
 
-        jumpAble = grounded || isWallLeft || isWallRight;
+        isWallLeft = Physics2D.OverlapCapsule(
+            wallCheckLeft.position,
+            new Vector2(0.2f, 0.6f),
+            CapsuleDirection2D.Vertical,
+            0f,
+            groundCheckLayer);
+        if (grounded)
+        {
+            moveSpeed = speed;
+        }
+        else if (isWallRight || isWallLeft)
+            moveSpeed = 1.5f;
+
+        jumpAble = grounded || isWallLeft || isWallRight; //현재 문제점, 꼭지점에 닿으면 grounded, isWall 전부 false상태
     }
 
     private void SlideWall()
