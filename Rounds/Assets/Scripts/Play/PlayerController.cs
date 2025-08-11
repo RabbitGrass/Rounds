@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -26,13 +27,16 @@ public class PlayerController : MonoBehaviour
     private bool isWallRight = false;
     private bool isWallLeft = false;
 
-    public int UserHp; //유저 체력, 기본값 10
+    public Image HpBar;
+    public int MaxHp; //유저 체력, 기본값 10
+    private float HpValue;
 
     private void Start()
     {
         wallJumpSpeed = jumpPower * 0.5f;
         wallJumpPower = jumpPower - 0.5f;
         moveSpeed = speed;
+        HpValue = MaxHp;
     }
 
     private void Update()
@@ -78,9 +82,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() //fixedUpdate는 주로 물리엔진과 연관이 된 애들만 넣는다.
     {
-        Debug.Log("grounded : " + grounded);
-        Debug.Log("WallJumping" + isWallJumping);
-        Debug.Log("Wall : " + isWallRight);
         float h = Input.GetAxis("Horizontal");
 
         Vector2 vector = rb.velocity;
@@ -120,6 +121,7 @@ public class PlayerController : MonoBehaviour
             moveSpeed = 1.5f;
 
         jumpAble = grounded || isWallLeft || isWallRight; //현재 문제점, 꼭지점에 닿으면 grounded, isWall 전부 false상태
+        
     }
 
     private void SlideWall()
@@ -128,6 +130,13 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -2f, float.MaxValue)); // 느리게 떨어지기
         }
+    }
+
+    void PlayerHpValue(float dmg)
+    {
+        HpValue -= dmg;
+        HpValue = Mathf.Clamp(HpValue, 0, MaxHp);
+        HpBar.fillAmount = HpValue/MaxHp;
     }
 
 }
