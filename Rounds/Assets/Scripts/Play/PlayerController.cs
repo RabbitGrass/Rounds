@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D rb;
@@ -27,16 +25,14 @@ public class PlayerController : MonoBehaviour
     private bool isWallRight = false;
     private bool isWallLeft = false;
 
-    public Image HpBar;
-    public int MaxHp; //유저 체력, 기본값 10
-    private float HpValue;
+    
 
     private void Start()
     {
         wallJumpSpeed = jumpPower * 0.5f;
         wallJumpPower = jumpPower - 0.5f;
         moveSpeed = speed;
-        HpValue = MaxHp;
+
     }
 
     private void Update()
@@ -132,11 +128,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void PlayerHpValue(float dmg)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        HpValue -= dmg;
-        HpValue = Mathf.Clamp(HpValue, 0, MaxHp);
-        HpBar.fillAmount = HpValue/MaxHp;
+        if (collision.CompareTag("MapEnd"))
+        {
+            isWallJumping = true;
+            wallJumpTimer = wallJumpDuration;
+        }
     }
-
 }

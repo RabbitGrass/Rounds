@@ -5,34 +5,35 @@ using UnityEngine;
 
 public class WallController : MonoBehaviour
 {
-    public float bounceForce;
+    public float bounceForce = 12f;
+    public Vector2 bounceDirection = Vector2.zero; // 벽마다 Inspector에서 설정 (ex: 왼쪽 벽은 (1,0))
+    Rigidbody2D rb;
 
-    public float minX = -10f;
-    public float maxX = 10f;
-    public float minY = -5f;
-    public float maxY = 5f;
-
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                Vector2 dir = Vector2.zero;
+        if (!other.CompareTag("Player")) return;
 
-                // 위치에 따라 튕기는 방향 결정
-                if (rb.position.x < minX) dir = Vector2.right;  // 왼쪽 경계
-                else if (rb.position.x > maxX) dir = Vector2.left;   // 오른쪽 경계
-                else if (rb.position.y < minY) dir = Vector2.up;     // 아래 경계
-                else if (rb.position.y > maxY) dir = Vector2.down;   // 위 경계
+        HpController Hp = other.GetComponent<HpController>();
 
-                rb.velocity = Vector2.zero;
-                rb.AddForce(dir * bounceForce, ForceMode2D.Impulse);
+        Hp.PlayerHpValue(4f);
 
-                // 위치 보정
-                other.transform.position = rb.position + dir * 0.5f;
-            }
-        }
+        rb = other.attachedRigidbody;
+
+        // 기존 속도 제거 (특히 튕기는 방향 성분만 제거해도 됨)
+        rb.velocity = Vector2.zero;
+
+        // 튕기는 힘 주기
+        //rb.AddForce(bounceDirection.normalized * bounceForce, ForceMode2D.Impulse);
+        rb.velocity = bounceDirection.normalized * bounceForce;
+
+        // 위치 보정 (살짝 벽 안쪽으로 밀어넣기)
+        other.transform.position = (Vector2)other.transform.position + bounceDirection.normalized * 0.1f;
+
+        Invoke("BounceStop", 0.1f);
+    }
+
+    void BounceStop()
+    {
+        rb.velocity = Vector2.zero;
     }
 }
