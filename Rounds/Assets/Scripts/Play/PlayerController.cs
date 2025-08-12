@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem Shild;
     public float boundTime;
     private bool isShildCharge = true;
-    private bool isShild = false;
+    public bool isShild = false;
     private void Start()
     {
         wallJumpSpeed = jumpPower * 0.5f;
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
         UpdateJumpAbleStatus();
 
-        SlideWall();
+        //SlideWall();
     }
 
     IEnumerator ShildActive()
@@ -135,24 +135,31 @@ public class PlayerController : MonoBehaviour
             CapsuleDirection2D.Vertical,
             0f,
             groundCheckLayer);
-        if (grounded)
+        if (isWallRight && Input.GetKey(KeyCode.D) || isWallLeft && Input.GetKey(KeyCode.A))
         {
-            moveSpeed = speed;
+            float slideSpeed = -2f;
+            if (Input.GetKey(KeyCode.W))
+                slideSpeed = -0.5f;
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, slideSpeed, float.MaxValue)); //벽 슬라이드
+            moveSpeed = 0f;
         }
-        else if (isWallRight || isWallLeft)
+        else if(isWallRight || isWallLeft)
             moveSpeed = 1.5f;
+        else
+            moveSpeed = speed;
+        
 
         jumpAble = grounded || isWallLeft || isWallRight; //현재 문제점, 꼭지점에 닿으면 grounded, isWall 전부 false상태
         
     }
 
-    private void SlideWall()
-    {
-        if (!grounded && (isWallLeft || isWallRight))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -2f, float.MaxValue)); // 느리게 떨어지기
-        }
-    }
+    //private void SlideWall()
+    //{
+    //    if (!grounded && (isWallLeft || isWallRight))
+    //    {
+    //        rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -2f, float.MaxValue)); // 느리게 떨어지기
+    //    }
+    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
