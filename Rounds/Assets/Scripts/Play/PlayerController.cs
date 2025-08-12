@@ -25,8 +25,11 @@ public class PlayerController : MonoBehaviour
     private bool isWallRight = false;
     private bool isWallLeft = false;
 
-    
-
+    public ParticleSystem ShildCharge;
+    public ParticleSystem Shild;
+    public float boundTime;
+    private bool isShildCharge = true;
+    private bool isShild = false;
     private void Start()
     {
         wallJumpSpeed = jumpPower * 0.5f;
@@ -74,6 +77,12 @@ public class PlayerController : MonoBehaviour
                 isWallJumping = false;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1) && isShildCharge)
+        {
+            StartCoroutine(ShildActive());
+        }
+
     }
 
     private void FixedUpdate() //fixedUpdate는 주로 물리엔진과 연관이 된 애들만 넣는다.
@@ -93,6 +102,23 @@ public class PlayerController : MonoBehaviour
         SlideWall();
     }
 
+    IEnumerator ShildActive()
+    {
+        isShildCharge = false;
+        isShild = true;
+        Shild.gameObject.SetActive(!isShildCharge);
+        ShildCharge.gameObject.SetActive(isShildCharge);
+        HpController hp = gameObject.GetComponent<HpController>();
+        hp.isShild = isShild;
+        yield return new WaitForSeconds(0.3f);
+        isShild = false;
+        hp.isShild = isShild;
+        yield return new WaitForSeconds(boundTime);
+
+        isShildCharge = true;
+        Shild.gameObject.SetActive(!isShildCharge);
+        ShildCharge.gameObject.SetActive(isShildCharge);
+    }
     private void UpdateJumpAbleStatus()
     {
         grounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.001f, groundCheckLayer);

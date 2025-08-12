@@ -8,7 +8,7 @@ public class HpController : MonoBehaviour
     public Image HpBar;
     public float MaxHp; //유저 체력, 기본값 10
     private float HpValue;
-
+    public bool isShild = false;
     private void Start()
     {
         HpValue = MaxHp;
@@ -16,6 +16,8 @@ public class HpController : MonoBehaviour
 
     public void PlayerHpValue(float dmg)
     {
+        if (isShild)
+            return;
         HpValue -= dmg;
         HpValue = Mathf.Clamp(HpValue, 0, MaxHp);
         HpBar.fillAmount = HpValue / MaxHp;

@@ -9,6 +9,9 @@ public class ArmAndGunController : MonoBehaviour
     public float armLength;//0.5      // 팔의 길이
     public SpriteRenderer armRenderer; //팔의 스프라이트 렌더러
     public SpriteRenderer playerRenderer; //플레이어 몸통 스프라이트 렌더러
+    public ParticleSystem Bounded;
+    public Transform ShildCharge;
+    Vector3 localShild;
     private Camera cam;
 
     void Start()
@@ -32,18 +35,28 @@ public class ArmAndGunController : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         armTransform.rotation = Quaternion.Euler(0, 0, angle);
 
+        //Vector3 Rotate = Bounded.transform.localEulerAngles;
+        localShild = ShildCharge.localPosition;
         // 좌우 반전 처리
         if (mouseWorldPos.x < gameObject.transform.position.x)
         {
             // 마우스가 왼쪽 → 반전
             armRenderer.flipY = true;
             playerRenderer.flipX = true;
+            //Rotate.y = 0;
+            //Bounded.transform.localEulerAngles = Rotate;
+            localShild.x = Mathf.Abs(localShild.x);
+            ShildCharge.localPosition = localShild;
         }
         else
         {
             // 마우스가 오른쪽 → 정방향
             armRenderer.flipY = false;
             playerRenderer.flipX = false;
+            //Rotate.y = 180;
+            //Bounded.transform.localEulerAngles = Rotate;
+            localShild.x = Mathf.Abs(localShild.x) * -1;
+            ShildCharge.localPosition = localShild;
         }
     }
 }
