@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HpController : MonoBehaviour
 {
     public Image HpBar;
-    public int MaxHp; //유저 체력, 기본값 10
+    public float MaxHp; //유저 체력, 기본값 10
     private float HpValue;
 
     private void Start()
