@@ -112,7 +112,6 @@ public class ArmAndGunController : MonoBehaviour
         //Debug.Log(Reload);
         if( Reload <= 0)
         {
-            Debug.Log("½ÇÇà");
             while(bulletOut.Count > 0)
             {
                 GameObject bullet = bulletOut[0];

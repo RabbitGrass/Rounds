@@ -105,6 +105,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator ShildActive()
     {
+        Debug.Log("½ÇÇà");
         isShildCharge = false;
         isShild = true;
         Shild.gameObject.SetActive(!isShildCharge);
@@ -116,7 +117,7 @@ public class PlayerController : MonoBehaviour
         isShild = false;
         hp.isShild = isShild;
         yield return new WaitForSeconds(boundTime);
-
+        Debug.Log("end");
         isShildCharge = true;
         Shild.gameObject.SetActive(!isShildCharge);
         Charging.gameObject.SetActive(!isShildCharge);
