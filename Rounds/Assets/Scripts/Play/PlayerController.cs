@@ -105,7 +105,6 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator ShildActive()
     {
-        Debug.Log("실행");
         isShildCharge = false;
         isShild = true;
         Shild.gameObject.SetActive(!isShildCharge);
@@ -117,7 +116,6 @@ public class PlayerController : MonoBehaviour
         isShild = false;
         hp.isShild = isShild;
         yield return new WaitForSeconds(boundTime);
-        Debug.Log("end");
         isShildCharge = true;
         Shild.gameObject.SetActive(!isShildCharge);
         Charging.gameObject.SetActive(!isShildCharge);
@@ -125,7 +123,7 @@ public class PlayerController : MonoBehaviour
     }
     private void UpdateJumpAbleStatus()
     {
-        grounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.001f, groundCheckLayer);
+        grounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.1f, groundCheckLayer);
         isWallRight = Physics2D.OverlapCapsule(
             wallCheckRight.position,                  // 중심
             new Vector2(0.2f, 0.6f),                  // 캡슐 크기 (너비, 높이)

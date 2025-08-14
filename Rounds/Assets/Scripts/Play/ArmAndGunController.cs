@@ -19,12 +19,16 @@ public class ArmAndGunController : MonoBehaviour
     public List<GameObject> bulletOver;
     private List<GameObject> bulletOut;
     public Transform GunTransform;
-    public int bulletCount = 3;
-    public float bulletSpeed;
-    public float ReloadTime;
+    private int bulletCount;
+    private float bulletSpeed;
+    private float ReloadTime;
     private float Reload;
     void Start()
     {
+        bulletCount = PlayerPrefs.GetInt("BulletCount");
+        ReloadTime = PlayerPrefs.GetFloat("BulletReloadTime");
+        Reload = ReloadTime;
+        bulletSpeed = PlayerPrefs.GetFloat("BulletSpeed");
         cam = Camera.main;
 
         bulletOver = new List<GameObject>();
@@ -32,10 +36,15 @@ public class ArmAndGunController : MonoBehaviour
         for(int i = 0; i < bulletCount; i++)
         {
             GameObject bullet = Instantiate(BulletFactory);
+            Bullet bulletAct = bullet.GetComponent<Bullet>();
+            bulletAct.player = gameObject;
+
             bulletOver.Add(bullet);
             bullet.SetActive(false);
         }
-        Reload = ReloadTime;
+
+        Debug.Log("count : " + bulletCount);
+        Debug.Log("bulletSpeed : " + bulletSpeed);
     }
 
     void Update()
@@ -94,8 +103,6 @@ public class ArmAndGunController : MonoBehaviour
             bulletOver.Remove(bullet);
             bullet.gameObject.transform.position = GunTransform.position;
             bullet.gameObject.transform.rotation = GunTransform.rotation;
-            Bullet bulletAct = bullet.GetComponent<Bullet>();
-            bulletAct.player = gameObject;
             bullet.SetActive(true);
 
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
