@@ -8,6 +8,7 @@ public class UiManager : MonoBehaviour
 {
     public void StartButton()
     {
-        SceneManager.LoadScene("Stage1");
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene("Skill");
     }
 }

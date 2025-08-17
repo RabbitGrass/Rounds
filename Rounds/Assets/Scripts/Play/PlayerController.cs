@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
 
     public ParticleSystem ShildCharge;
     public ParticleSystem Shild;
+    public ParticleSystem Charging;
     public float boundTime;
     private bool isShildCharge = true;
     public bool isShild = false;
@@ -107,6 +108,7 @@ public class PlayerController : MonoBehaviour
         isShildCharge = false;
         isShild = true;
         Shild.gameObject.SetActive(!isShildCharge);
+        Charging.gameObject.SetActive(!isShildCharge);
         ShildCharge.gameObject.SetActive(isShildCharge);
         HpController hp = gameObject.GetComponent<HpController>();
         hp.isShild = isShild;
@@ -114,14 +116,14 @@ public class PlayerController : MonoBehaviour
         isShild = false;
         hp.isShild = isShild;
         yield return new WaitForSeconds(boundTime);
-
         isShildCharge = true;
         Shild.gameObject.SetActive(!isShildCharge);
+        Charging.gameObject.SetActive(!isShildCharge);
         ShildCharge.gameObject.SetActive(isShildCharge);
     }
     private void UpdateJumpAbleStatus()
     {
-        grounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.001f, groundCheckLayer);
+        grounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.1f, groundCheckLayer);
         isWallRight = Physics2D.OverlapCapsule(
             wallCheckRight.position,                  // Áß½É
             new Vector2(0.2f, 0.6f),                  // Ä¸½¶ Å©±â (³Êºñ, ³ôÀÌ)

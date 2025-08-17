@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HpController : MonoBehaviour
@@ -11,7 +12,10 @@ public class HpController : MonoBehaviour
     public bool isShild = false;
     private void Start()
     {
+        if(gameObject.layer == LayerMask.NameToLayer("Player"))
+            MaxHp = PlayerPrefs.GetFloat("HP");
         HpValue = MaxHp;
+        Debug.Log("MaxHp : " + MaxHp);
     }
 
     public void PlayerHpValue(float dmg)
@@ -22,6 +26,11 @@ public class HpController : MonoBehaviour
         HpValue = Mathf.Clamp(HpValue, 0, MaxHp);
         HpBar.fillAmount = HpValue / MaxHp;
         if (HpBar.fillAmount <= 0)
+        {
             gameObject.SetActive(false);
+            Invoke("NextRound", 3f);
+        }
     }
+
+    void NextRound() => SceneManager.LoadScene("Skill");
 }
