@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ArmAndGunController : MonoBehaviour
 {
+    private bool isRight = true;
     public Transform armTransform;      // 팔 오브젝트
     //public Transform bodyTransform;     // 몸통 중심 (원)
     public float armLength;//0.5      // 팔의 길이
@@ -23,6 +24,9 @@ public class ArmAndGunController : MonoBehaviour
     private float bulletSpeed;
     private float ReloadTime;
     private float Reload;
+
+    public GameObject[] bulletCheck;
+    //private Transform[] bulletCheckPos;
     void Start()
     {
         bulletCount = PlayerPrefs.GetInt("BulletCount");
@@ -30,7 +34,6 @@ public class ArmAndGunController : MonoBehaviour
         Reload = ReloadTime;
         bulletSpeed = PlayerPrefs.GetFloat("BulletSpeed");
         cam = Camera.main;
-
         bulletOver = new List<GameObject>();
         bulletOut = new List<GameObject>();
         for(int i = 0; i < bulletCount; i++)
@@ -68,7 +71,7 @@ public class ArmAndGunController : MonoBehaviour
         //Vector3 Rotate = Bounded.transform.localEulerAngles;
         localShild = ShildCharge.localPosition;
         // 좌우 반전 처리
-        if (mouseWorldPos.x < gameObject.transform.position.x)
+        if (mouseWorldPos.x < gameObject.transform.position.x && isRight)
         {
             // 마우스가 왼쪽 → 반전
             armRenderer.flipY = true;
@@ -81,8 +84,10 @@ public class ArmAndGunController : MonoBehaviour
             localShild.x = Mathf.Abs(localShild.x);
             ShildCharge.localPosition = localShild;
             Charging.localPosition = localShild;
+            BulletCheckPos();
+            isRight = false;
         }
-        else
+        else if(mouseWorldPos.x >= gameObject.transform.position.x && !isRight)
         {
             // 마우스가 오른쪽 → 정방향
             armRenderer.flipY = false;
@@ -94,6 +99,8 @@ public class ArmAndGunController : MonoBehaviour
             localShild.x = Mathf.Abs(localShild.x) * -1;
             ShildCharge.localPosition = localShild;
             Charging.localPosition = localShild;
+            BulletCheckPos();
+            isRight = true;
         }
 
 
@@ -104,11 +111,11 @@ public class ArmAndGunController : MonoBehaviour
             bullet.gameObject.transform.position = GunTransform.position;
             bullet.gameObject.transform.rotation = GunTransform.rotation;
             bullet.SetActive(true);
-
+            
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
             rb.AddForce(direction * bulletSpeed);
-
+            bulletCheck[bulletOver.Count].SetActive(false);//이미 bulletOver의 개수가 -1상태이기 때문에 굳이 -1할 필요 없음
             bulletOut.Add(bullet);
 
             Reload = ReloadTime;
@@ -123,9 +130,22 @@ public class ArmAndGunController : MonoBehaviour
             {
                 GameObject bullet = bulletOut[0];
                 bullet.SetActive(false);
+                bulletCheck[bulletOver.Count].SetActive(true);//bulletOver을 Add하기 전에 SetActive를 true해놓으면 굳이 -1할 필요 없음.
+                                                              //만약 bulletOver를 Add한 후에 bulletCheck를 true로 하고 싶으면 반드시 -1할 것
                 bulletOver.Add(bullet);
                 bulletOut.Remove(bullet);
+                
             }
+        }
+    }
+
+    void BulletCheckPos()
+    {
+        for(int i = 0; i < bulletCount; i++)
+        {
+            Vector3 pos = bulletCheck[i].transform.localPosition;
+            pos.y = -pos.y;
+            bulletCheck[i].transform.localPosition = pos;
         }
     }
 }

@@ -82,7 +82,7 @@ public class Skill : MonoBehaviour
         PlayerPrefs.SetFloat("BulletSpeed", bulletSpeed);
         PlayerPrefs.SetFloat("BulletReloadTime", bulletReloadTime);
         PlayerPrefs.SetFloat("BulletDmg", bulletDmg);
-        PlayerPrefs.SetInt("BulletCount", 2);
+        PlayerPrefs.SetInt("BulletCount", 3);
     }
 
     void SkillCard()
