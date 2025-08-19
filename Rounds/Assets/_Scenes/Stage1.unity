@@ -183,7 +183,7 @@ Transform:
   m_GameObject: {fileID: 199320561}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.44000018, y: 0.55999994, z: 0}
+  m_LocalPosition: {x: 0.46, y: 0.56, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -583,7 +583,7 @@ Transform:
   m_GameObject: {fileID: 946433949}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.15999949, y: 0.55999994, z: 0}
+  m_LocalPosition: {x: 0.207, y: 0.56, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1047,7 +1047,7 @@ Transform:
   m_GameObject: {fileID: 1654166479}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.74000037, y: 0.55999994, z: 0}
+  m_LocalPosition: {x: 0.715, y: 0.56, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1521,6 +1521,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5757402773531663058, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: bulletCheck.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757402773531663058, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: bulletCheck.Array.data[0]
+      value: 
+      objectReference: {fileID: 946433949}
+    - target: {fileID: 5757402773531663058, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: bulletCheck.Array.data[1]
+      value: 
+      objectReference: {fileID: 199320561}
+    - target: {fileID: 5757402773531663058, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: bulletCheck.Array.data[2]
+      value: 
+      objectReference: {fileID: 1654166479}
     - target: {fileID: 7645333683122438946, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.56
