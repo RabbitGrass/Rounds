@@ -22,7 +22,7 @@ public class WallController : MonoBehaviour
             bounce = bounceForce;
         }
 
-            HpController Hp = other.GetComponent<HpController>();
+        HpController Hp = other.GetComponent<HpController>();
 
         Hp.PlayerHpValue(4f);
 
