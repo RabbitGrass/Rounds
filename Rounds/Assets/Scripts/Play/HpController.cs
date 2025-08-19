@@ -25,7 +25,7 @@ public class HpController : MonoBehaviour
         HpValue -= dmg;
         HpValue = Mathf.Clamp(HpValue, 0, MaxHp);
         HpBar.fillAmount = HpValue / MaxHp;
-        if (HpBar.fillAmount <= 0)
+        if (HpBar.fillAmount <= 0 && gameObject.CompareTag("Player"))
         {
             gameObject.SetActive(false);
             Invoke("NextRound", 3f);

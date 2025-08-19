@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 293861607}
   - component: {fileID: 293861606}
+  - component: {fileID: 293861608}
   m_Layer: 0
   m_Name: Skill
   m_TagString: Untagged
@@ -165,10 +166,19 @@ MonoBehaviour:
   - FastBall
   - QuickShot
   - Grow
-  - Bounce
+  - Riccochet
   - Poison
   - Tank
   - Leech
+  CardChoice: {fileID: 293861608}
+  CardImage:
+  - {fileID: 21300000, guid: 25280c5fbb0a98b488bdf5b9f8edea18, type: 3}
+  - {fileID: 21300000, guid: 95bb4380920ced44eac17ac409f5dadc, type: 3}
+  - {fileID: 21300000, guid: a9eb0ec8157c43d448d79e87678b33eb, type: 3}
+  - {fileID: 21300000, guid: e282ecd750b89d040a6402b3d4c56fd4, type: 3}
+  - {fileID: 21300000, guid: 326395550db497f40bc3167d5a9dbd30, type: 3}
+  - {fileID: 21300000, guid: 6dfc4303bee51504e9bf92dcacac6098, type: 3}
+  - {fileID: 21300000, guid: 3da6f0a87b78f4a4589f0c816eb8efd9, type: 3}
 --- !u!4 &293861607
 Transform:
   m_ObjectHideFlags: 0
@@ -178,7 +188,7 @@ Transform:
   m_GameObject: {fileID: 293861605}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4550943, y: -0.97643185, z: -0.026690714}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -189,6 +199,27 @@ Transform:
   - {fileID: 1297513417}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &293861608
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293861605}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6fe475c513fca7841a87967eef31a3cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &760720435
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +298,7 @@ Transform:
   m_GameObject: {fileID: 760720435}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4550943, y: 3.0764318, z: 0.026690714}
+  m_LocalPosition: {x: 0, y: 2.1, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -351,7 +382,7 @@ Transform:
   m_GameObject: {fileID: 959094448}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.13917309, w: 0.9902681}
-  m_LocalPosition: {x: -1.6449056, y: 2.5764318, z: 0.026690714}
+  m_LocalPosition: {x: -3.1, y: 1.6, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -435,7 +466,7 @@ Transform:
   m_GameObject: {fileID: 1197228561}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.3420201, w: 0.9396927}
-  m_LocalPosition: {x: -4.5449057, y: 0.77643186, z: 0.026690714}
+  m_LocalPosition: {x: -6, y: 0.2, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -519,7 +550,7 @@ Transform:
   m_GameObject: {fileID: 1297513415}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.3420201, w: 0.9396927}
-  m_LocalPosition: {x: 7.4550943, y: 0.77643186, z: 0.026690714}
+  m_LocalPosition: {x: 6, y: 0.2, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -740,7 +771,7 @@ Transform:
   m_GameObject: {fileID: 1801286703}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.13917309, w: 0.9902681}
-  m_LocalPosition: {x: 4.5550942, y: 2.5764318, z: 0.026690714}
+  m_LocalPosition: {x: 3.1, y: 1.6, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

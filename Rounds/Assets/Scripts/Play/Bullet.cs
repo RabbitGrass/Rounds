@@ -33,24 +33,20 @@ public class Bullet : MonoBehaviour
             HpController php = collision.gameObject.GetComponent<HpController>();
             Rigidbody2D prb = collision.gameObject.GetComponent<Rigidbody2D>();
             php.PlayerHpValue(dmg);
-            if (php.isShild)//만약 상대가 실드를 썼을 경우
-            {
-                if (prb != null) //이 부분은 플레이어가 실드 사용한 후 총에 맞을 경우 뒤로 밀려나는 반동을 없애려고 한 건데, 완화는 되었지만 없어지지는 않았음, 다른방법 강구 필요
-                {
-                    // 충돌 법선 방향의 속도만 제거
-                    Vector2 normal = collision.GetContact(0).normal;
-                    Vector2 vel = prb.velocity;
-                    Vector2 rebound = Vector2.Dot(vel, normal) * normal;
-                    prb.velocity = vel - rebound;
-                }
-                return;
-            }
             if (PlayerPrefs.HasKey("Leech"))//리치 스킬을 가졌을 경우 실행
             {
                 leech.PlayerHpValue(-(dmg * (75 * 0.01f)));
             }
 
-            gameObject.SetActive(false);
+            if (php.isShild)//만약 상대가 실드를 썼을 경우
+            {
+                // 실드 상태면 튕김 처리
+                Vector2 bounceDir = (transform.position - collision.transform.position).normalized;
+                rb.velocity = bounceDir * Mathf.Max(rb.velocity.magnitude, 5f);
+                // 최소 속도 5f로 튕김이 너무 느리지 않게 설정
+            }
+            else
+                gameObject.SetActive(false);
         }
 
 

@@ -60,10 +60,6 @@ public class PlayerController : MonoBehaviour
                 {
                     wallJumpDirection = 1;
                 }
-
-                //rb.velocity = Vector2.zero;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-                //Vector2 jumpDir = new Vector2(wallJumpDirection, 1).normalized;
-                //rb.AddForce(jumpDir * jumpPower, ForceMode2D.Impulse);
                 rb.velocity = new Vector2(wallJumpDirection * wallJumpSpeed, wallJumpPower);
                 isWallJumping = true;
                 wallJumpTimer = wallJumpDuration;
@@ -99,8 +95,6 @@ public class PlayerController : MonoBehaviour
             rb.velocity = vector;
 
         UpdateJumpAbleStatus();
-
-        //SlideWall();
     }
 
     IEnumerator ShildActive()
@@ -151,17 +145,9 @@ public class PlayerController : MonoBehaviour
             moveSpeed = speed;
         
 
-        jumpAble = grounded || isWallLeft || isWallRight; //현재 문제점, 꼭지점에 닿으면 grounded, isWall 전부 false상태
+        jumpAble = grounded || isWallLeft || isWallRight;
         
     }
-
-    //private void SlideWall()
-    //{
-    //    if (!grounded && (isWallLeft || isWallRight))
-    //    {
-    //        rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -2f, float.MaxValue)); // 느리게 떨어지기
-    //    }
-    //}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

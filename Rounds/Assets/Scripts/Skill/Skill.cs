@@ -14,9 +14,14 @@ public class Skill : MonoBehaviour
     private Vector3 baseScale;
 
     public string[] skillName;
+    
     Dictionary<int, string> card;
 
     private int choice;
+
+    public Animator CardChoice;
+
+    public Sprite[] CardImage;
 
     private bool isChoice;
     private void Start()
@@ -38,6 +43,7 @@ public class Skill : MonoBehaviour
                 card.Add(i, skillName[rnd]);
                 i++;
             }
+
         }
         skillCard[choice].transform.localScale = Vector3.one;
 
@@ -68,7 +74,8 @@ public class Skill : MonoBehaviour
         {
             isChoice = true;
             SkillCard();
-            Invoke("StartGame", 3f);
+            CardChoice.SetBool("isChoice", true);
+            Invoke("StartGame", 2f);
         }
     }
     void StartGame()
@@ -114,7 +121,7 @@ public class Skill : MonoBehaviour
                 i++;
                 PlayerPrefs.SetInt("Grow", i);
                 break;
-            case "Bounce":
+            case "Riccochet":
                 i = PlayerPrefs.GetInt("Bounce");
                 i += 2;
                 PlayerPrefs.SetInt("Bounce", i);

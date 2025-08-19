@@ -5152,6 +5152,9 @@ MonoBehaviour:
   BulletFactory: {fileID: 739484121611889296, guid: a769fac9dec407544b1a9b366d3d7d67, type: 3}
   bulletOver: []
   GunTransform: {fileID: 5410431473108340278}
+  bulletCheckObj: {fileID: 0}
+  bulletCheckX: []
+  bulletCheckY: 0
 --- !u!114 &7761121904182719383
 MonoBehaviour:
   m_ObjectHideFlags: 0

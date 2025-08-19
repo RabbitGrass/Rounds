@@ -19906,7 +19906,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &3803694948054452329
 CapsuleCollider2D:
@@ -19992,6 +19992,9 @@ MonoBehaviour:
   BulletFactory: {fileID: 739484121611889296, guid: a769fac9dec407544b1a9b366d3d7d67, type: 3}
   bulletOver: []
   GunTransform: {fileID: 2554997446364787617}
+  bulletCheckObj: {fileID: 0}
+  bulletCheckX: []
+  bulletCheckY: 0
 --- !u!114 &6799588569653171326
 MonoBehaviour:
   m_ObjectHideFlags: 0

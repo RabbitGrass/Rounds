@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ArmAndGunController : MonoBehaviour
 {
@@ -25,29 +26,37 @@ public class ArmAndGunController : MonoBehaviour
     private float ReloadTime;
     private float Reload;
 
-    public GameObject[] bulletCheck;
+    public GameObject bulletCheckObj;
+    private GameObject[] bulletCheck;
+    public float[] bulletCheckX;
+    public float bulletCheckY;
     //private Transform[] bulletCheckPos;
     void Start()
     {
         bulletCount = PlayerPrefs.GetInt("BulletCount");
+        if (bulletCount <= 0)
+            bulletCount = 1;
         ReloadTime = PlayerPrefs.GetFloat("BulletReloadTime");
         Reload = ReloadTime;
         bulletSpeed = PlayerPrefs.GetFloat("BulletSpeed");
         cam = Camera.main;
         bulletOver = new List<GameObject>();
         bulletOut = new List<GameObject>();
+        bulletCheck = new GameObject[bulletCount];
+
         for(int i = 0; i < bulletCount; i++)
         {
-            GameObject bullet = Instantiate(BulletFactory);
-            Bullet bulletAct = bullet.GetComponent<Bullet>();
-            bulletAct.player = gameObject;
+            GameObject bullet = BulletCreate(BulletFactory, gameObject);
 
             bulletOver.Add(bullet);
-            bullet.SetActive(false);
+            GameObject bulletCnt = Instantiate(bulletCheckObj);
+            bulletCnt.transform.parent = armTransform;//armAndGun Transform에 자식 오브젝트로 추가
+            bulletCnt.transform.localPosition = new Vector3(bulletCheckX[i % 3], bulletCheckY);
+            bulletCheck[i] = bulletCnt;
+            if (i % 3 == 2)
+                bulletCheckY += 0.2f;
         }
 
-        Debug.Log("count : " + bulletCount);
-        Debug.Log("bulletSpeed : " + bulletSpeed);
     }
 
     void Update()
@@ -124,18 +133,38 @@ public class ArmAndGunController : MonoBehaviour
 
         Reload -= Time.deltaTime;
         //Debug.Log(Reload);
-        if( Reload <= 0)
+        if( Reload <= 0 && bulletOver.Count < bulletCount)
         {
-            while(bulletOut.Count > 0)
+            BulletReload();
+        }
+    }
+
+    static GameObject BulletCreate(GameObject BulletFactory, GameObject gameObject)
+    {
+        GameObject bullet = Instantiate(BulletFactory);
+        Bullet bulletAct = bullet.GetComponent<Bullet>();
+        bulletAct.player = gameObject;
+        bullet.SetActive(false);
+        return bullet;
+    }
+    void BulletReload()
+    {
+        int i = 0;
+        while (bulletOver.Count < bulletCount)
+        {
+            GameObject bullet = bulletOut[i];
+            //bullet.SetActive(false);
+            if (bullet.activeSelf == true)
             {
-                GameObject bullet = bulletOut[0];
-                bullet.SetActive(false);
-                bulletCheck[bulletOver.Count].SetActive(true);//bulletOver을 Add하기 전에 SetActive를 true해놓으면 굳이 -1할 필요 없음.
-                                                              //만약 bulletOver를 Add한 후에 bulletCheck를 true로 하고 싶으면 반드시 -1할 것
-                bulletOver.Add(bullet);
-                bulletOut.Remove(bullet);
-                
+                bullet = BulletCreate(BulletFactory, gameObject);
+                i++;
             }
+            else
+                bulletOut.Remove(bulletOut[i]);
+            bulletCheck[bulletOver.Count].SetActive(true);//bulletOver을 Add하기 전에 SetActive를 true해놓으면 굳이 -1할 필요 없음.
+                                                          //만약 bulletOver를 Add한 후에 bulletCheck를 true로 하고 싶으면 반드시 -1할 것
+            bulletOver.Add(bullet);
+
         }
     }
 
