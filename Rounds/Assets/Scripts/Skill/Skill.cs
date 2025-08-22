@@ -13,7 +13,7 @@ public class Skill : MonoBehaviour
     public GameObject[] skillCard;
     private Vector3 baseScale;
 
-    public string[] skillName;
+    //public string[] skillName;
     
     Dictionary<int, string> card;
 
@@ -23,7 +23,11 @@ public class Skill : MonoBehaviour
 
     public Sprite[] CardImage;
 
+    //public SpriteRenderer[] CardSprite;
+
     private bool isChoice;
+
+    private bool ChoiceStart; //시작시 바로 움직이는 것을 방지하기 위함
     private void Start()
     {
         if (!PlayerPrefs.HasKey("HP"))
@@ -36,25 +40,22 @@ public class Skill : MonoBehaviour
         int i = 0;
         while(card.Count < 5)
         {
-            int rnd = Random.Range(0, skillName.Length);
-
-            if (!card.ContainsValue(skillName[rnd]))
+            int rnd = Random.Range(0, CardImage.Length);
+            SpriteRenderer cardSprite = skillCard[i].gameObject.GetComponent<SpriteRenderer>();
+            if (!card.ContainsValue(CardImage[rnd].name))
             {
-                card.Add(i, skillName[rnd]);
+                cardSprite.sprite = CardImage[rnd];
+                card.Add(i, cardSprite.sprite.name);
                 i++;
             }
-
         }
-        skillCard[choice].transform.localScale = Vector3.one;
-
-        foreach (var s in card.Values)
-        {
-            Debug.Log(s);
-        }
+        Invoke("CardPlace", 1.3f);
     }
 
     private void Update()
     {
+        if (!ChoiceStart)
+            return;
 
         if(choice < 4 && Input.GetKeyDown(KeyCode.D))
         {
@@ -74,10 +75,17 @@ public class Skill : MonoBehaviour
         {
             isChoice = true;
             SkillCard();
-            CardChoice.SetBool("isChoice", true);
+            CardChoice.SetBool("isChoice", isChoice);
             Invoke("StartGame", 2f);
         }
     }
+
+    void CardPlace()
+    {
+        skillCard[choice].transform.localScale = Vector3.one;
+        ChoiceStart = true;
+    }
+
     void StartGame()
     {
         SceneManager.LoadScene("Stage1");
@@ -114,7 +122,7 @@ public class Skill : MonoBehaviour
                 PlayerPrefs.SetFloat("BulletSpeed", f);
                 f = PlayerPrefs.GetFloat("BulletReloadTime");
                 f += 0.25f;
-                PlayerPrefs.SetFloat("ReloadTime", f);
+                PlayerPrefs.SetFloat("BulletReloadTime", f);
                 break;
             case "Grow":
                 i = PlayerPrefs.GetInt("Grow");

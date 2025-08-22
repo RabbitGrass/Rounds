@@ -132,8 +132,7 @@ public class ArmAndGunController : MonoBehaviour
 
 
         Reload -= Time.deltaTime;
-        //Debug.Log(Reload);
-        if( Reload <= 0 && bulletOver.Count < bulletCount)
+        if( Reload <= 0 && bulletOver.Count < bulletCount) //코루틴을 쓰지 않는 이유는 총을 쏠 때마다 리로드 시간을 초기화 시켜야하기 때문
         {
             BulletReload();
         }
@@ -154,7 +153,7 @@ public class ArmAndGunController : MonoBehaviour
         {
             GameObject bullet = bulletOut[i];
             //bullet.SetActive(false);
-            if (bullet.activeSelf == true)
+            if (bullet.activeSelf == true) //만약 아직 활동중인 총알일 경우 탄알집에 넣기 위한 새로운 총알 생성
             {
                 bullet = BulletCreate(BulletFactory, gameObject);
                 i++;

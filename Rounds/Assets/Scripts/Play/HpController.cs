@@ -10,6 +10,8 @@ public class HpController : MonoBehaviour
     public float MaxHp; //유저 체력, 기본값 10
     private float HpValue;
     public bool isShild = false;
+    public GameMannager GameMannager;
+
     private void Start()
     {
         if(gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -24,13 +26,20 @@ public class HpController : MonoBehaviour
             return;
         HpValue -= dmg;
         HpValue = Mathf.Clamp(HpValue, 0, MaxHp);
+
+        if (!gameObject.CompareTag("Player"))
+        {
+            Debug.Log(HpValue);
+            if(HpValue <= 0)
+                Destroy(gameObject);
+            Debug.Log(HpValue);
+            return;
+        }
         HpBar.fillAmount = HpValue / MaxHp;
-        if (HpBar.fillAmount <= 0 && gameObject.CompareTag("Player"))
+        if (HpValue <= 0)
         {
             gameObject.SetActive(false);
-            Invoke("NextRound", 3f);
+            GameMannager.WhoAreWin(gameObject);
         }
     }
-
-    void NextRound() => SceneManager.LoadScene("Skill");
 }

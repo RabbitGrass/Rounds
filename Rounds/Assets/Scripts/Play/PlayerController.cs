@@ -91,8 +91,12 @@ public class PlayerController : MonoBehaviour
         vector.x = h * moveSpeed;
 
 
-        if(!isWallJumping)
-            rb.velocity = vector;
+        if(isWallJumping && !grounded)
+        {
+            //만약 벽 점프가 활성화 된 상태에서 땅에 붙어있지 않다면
+        }
+        else
+          rb.velocity = vector;
 
         UpdateJumpAbleStatus();
     }
