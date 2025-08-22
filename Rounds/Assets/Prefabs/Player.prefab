@@ -5054,7 +5054,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -5119,7 +5119,7 @@ MonoBehaviour:
   rb: {fileID: 7738513375771359287}
   speed: 3.5
   wallJumpDuration: 0.1
-  jumpPower: 5
+  jumpPower: 25
   groundCheckTransform: {fileID: 6411915123301224706}
   groundCheckLayer:
     serializedVersion: 2

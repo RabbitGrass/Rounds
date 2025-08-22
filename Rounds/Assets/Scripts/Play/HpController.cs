@@ -67,6 +67,7 @@ public class HpController : MonoBehaviour
 
             if (BulletPlayer != gameObject)
             {
+                Debug.Log(gameObject.name);
                 hp = BulletPlayer.GetComponent<HpController>();
                 hp.PlayerHpValue(-parasite);
             }            

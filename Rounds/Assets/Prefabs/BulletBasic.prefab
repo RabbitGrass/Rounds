@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f966f6e25f7fe34f851f8ca03b59857, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poison: {fileID: -8285377384035324040}
 --- !u!114 &8304694886224304415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842e75f61a0e74f42a043e302a6e56a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  parasite: {fileID: 8304694886224304415}
 --- !u!1 &8259188252121170013
 GameObject:
   m_ObjectHideFlags: 0

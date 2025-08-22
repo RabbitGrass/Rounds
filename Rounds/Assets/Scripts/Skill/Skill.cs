@@ -159,14 +159,15 @@ public class Skill : MonoBehaviour
                 f += 0.5f;
                 PlayerPrefs.SetFloat("BulletReloadTime", f);
                 break;
-            
             case "Leech":
                 f = PlayerPrefs.GetFloat("HP");
                 f += (f * (30 * 0.01f));
                 PlayerPrefs.SetFloat("HP", f);
                 PlayerPrefs.SetString("Leech", "True");
                 break;
-
+            case "BigBullet":
+                
+                break;
                 
             default:
                 break;
