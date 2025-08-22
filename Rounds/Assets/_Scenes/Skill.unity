@@ -162,14 +162,6 @@ MonoBehaviour:
   - {fileID: 760720435}
   - {fileID: 1801286703}
   - {fileID: 1297513415}
-  skillName:
-  - FastBall
-  - QuickShot
-  - Grow
-  - Riccochet
-  - Poison
-  - Tank
-  - Leech
   CardChoice: {fileID: 293861608}
   CardImage:
   - {fileID: 21300000, guid: 25280c5fbb0a98b488bdf5b9f8edea18, type: 3}
@@ -177,6 +169,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a9eb0ec8157c43d448d79e87678b33eb, type: 3}
   - {fileID: 21300000, guid: e282ecd750b89d040a6402b3d4c56fd4, type: 3}
   - {fileID: 21300000, guid: 326395550db497f40bc3167d5a9dbd30, type: 3}
+  - {fileID: 21300000, guid: 2522a05b2a8eb0043933b61bf0ca6fad, type: 3}
   - {fileID: 21300000, guid: 6dfc4303bee51504e9bf92dcacac6098, type: 3}
   - {fileID: 21300000, guid: 3da6f0a87b78f4a4589f0c816eb8efd9, type: 3}
 --- !u!4 &293861607

@@ -143,6 +143,14 @@ public class Skill : MonoBehaviour
                 i++;
                 PlayerPrefs.SetInt("Poison", i);
                 break;
+            case "Parasite":
+                f = PlayerPrefs.GetFloat("BulletDmg");
+                f -= 0.5f;
+                PlayerPrefs.SetFloat("BulletDmg", f);
+                i = PlayerPrefs.GetInt("Parasite");
+                i++;
+                PlayerPrefs.SetInt("Parasite", i);
+                break;
             case "Tank":
                 f = PlayerPrefs.GetFloat("HP");
                 f += Hp;
@@ -158,6 +166,8 @@ public class Skill : MonoBehaviour
                 PlayerPrefs.SetFloat("HP", f);
                 PlayerPrefs.SetString("Leech", "True");
                 break;
+
+                
             default:
                 break;
         }

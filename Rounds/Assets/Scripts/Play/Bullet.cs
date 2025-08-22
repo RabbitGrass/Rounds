@@ -6,18 +6,33 @@ public class Bullet : MonoBehaviour
 {
     private float dmg;
     public GameObject player;
+    public Poison poison;
+    public Parasite parasite;
     private Rigidbody2D rb;
     private HpController leech;
     private int bounce;
     private void Start()
     {
         leech = player.GetComponent<HpController>();
-        Debug.Log(PlayerPrefs.HasKey("Leech"));
+        //Debug.Log(PlayerPrefs.HasKey("Leech"));
         rb = GetComponent<Rigidbody2D>();
         dmg = PlayerPrefs.GetFloat("BulletDmg");
         if (PlayerPrefs.HasKey("FastBall"))
         {
             rb.gravityScale = 0;
+        }
+
+        int pos = PlayerPrefs.GetInt("Poison");
+        if(pos > 0)
+        {
+            poison.enabled = true;
+        }
+
+        int pas = PlayerPrefs.GetInt("Parasite");
+        if (pas > 0)
+        {
+            parasite.enabled = true;
+            parasite.player = player;
         }
     }
 

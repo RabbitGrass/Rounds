@@ -42,4 +42,35 @@ public class HpController : MonoBehaviour
             GameMannager.WhoAreWin(gameObject);
         }
     }
+
+
+    public IEnumerator Poison(float poison)
+    {
+        int i = 8;
+        while(i > 0)
+        {
+            yield return new WaitForSeconds(0.8f);
+            PlayerHpValue(poison);
+            i--;
+        }
+    }
+
+    public IEnumerator Parasite(float parasite, GameObject BulletPlayer)
+    {
+        int i = 8;
+        HpController hp;
+        while (i > 0)
+        {
+    
+            yield return new WaitForSeconds(0.8f);
+            PlayerHpValue(parasite);
+
+            if (BulletPlayer != gameObject)
+            {
+                hp = BulletPlayer.GetComponent<HpController>();
+                hp.PlayerHpValue(-parasite);
+            }            
+            i--;
+        }
+    }
 }
