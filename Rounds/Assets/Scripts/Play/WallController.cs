@@ -5,13 +5,22 @@ using UnityEngine;
 
 public class WallController : MonoBehaviour
 {
-    public float bounceForce = 12f;
+    public float bounceForce;
+    private float bounce;
     public Vector2 bounceDirection = Vector2.zero; // 벽마다 Inspector에서 설정 (ex: 왼쪽 벽은 (1,0))
     Rigidbody2D rb;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
+
+        PlayerController shild = other.GetComponent<PlayerController>();
+        if (shild.isShild)
+            bounce = bounceForce * 1.5f;
+        else
+        {
+            bounce = bounceForce;
+        }
 
         HpController Hp = other.GetComponent<HpController>();
 
@@ -24,7 +33,7 @@ public class WallController : MonoBehaviour
 
         // 튕기는 힘 주기
         //rb.AddForce(bounceDirection.normalized * bounceForce, ForceMode2D.Impulse);
-        rb.velocity = bounceDirection.normalized * bounceForce;
+        rb.velocity = bounceDirection.normalized * bounce;
 
         // 위치 보정 (살짝 벽 안쪽으로 밀어넣기)
         other.transform.position = (Vector2)other.transform.position + bounceDirection.normalized * 0.1f;

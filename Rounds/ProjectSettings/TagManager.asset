@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - MapEnd
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -12,11 +13,11 @@ TagManager:
   - grounded
   - Water
   - UI
-  - Light
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - bullet
+  - Enemy
+  - BackGround
+  - Object
   - 
   - 
   - 
@@ -44,4 +45,16 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 3092467765
+    locked: 0
+  - name: Floor
+    uniqueID: 4034523901
+    locked: 0
+  - name: Object
+    uniqueID: 1314095905
+    locked: 0
+  - name: Bullet
+    uniqueID: 3827438687
+    locked: 0
+  - name: Player
+    uniqueID: 1074871895
     locked: 0

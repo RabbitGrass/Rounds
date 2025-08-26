@@ -27,9 +27,10 @@ public class PlayerController : MonoBehaviour
 
     public ParticleSystem ShildCharge;
     public ParticleSystem Shild;
+    public ParticleSystem Charging;
     public float boundTime;
     private bool isShildCharge = true;
-    private bool isShild = false;
+    public bool isShild = false;
     private void Start()
     {
         wallJumpSpeed = jumpPower * 0.5f;
@@ -59,10 +60,6 @@ public class PlayerController : MonoBehaviour
                 {
                     wallJumpDirection = 1;
                 }
-
-                //rb.velocity = Vector2.zero;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-                //Vector2 jumpDir = new Vector2(wallJumpDirection, 1).normalized;
-                //rb.AddForce(jumpDir * jumpPower, ForceMode2D.Impulse);
                 rb.velocity = new Vector2(wallJumpDirection * wallJumpSpeed, wallJumpPower);
                 isWallJumping = true;
                 wallJumpTimer = wallJumpDuration;
@@ -94,12 +91,14 @@ public class PlayerController : MonoBehaviour
         vector.x = h * moveSpeed;
 
 
-        if(!isWallJumping)
-            rb.velocity = vector;
+        if(isWallJumping && !grounded)
+        {
+            //만약 벽 점프가 활성화 된 상태에서 땅에 붙어있지 않다면
+        }
+        else
+          rb.velocity = vector;
 
         UpdateJumpAbleStatus();
-
-        SlideWall();
     }
 
     IEnumerator ShildActive()
@@ -107,6 +106,7 @@ public class PlayerController : MonoBehaviour
         isShildCharge = false;
         isShild = true;
         Shild.gameObject.SetActive(!isShildCharge);
+        Charging.gameObject.SetActive(!isShildCharge);
         ShildCharge.gameObject.SetActive(isShildCharge);
         HpController hp = gameObject.GetComponent<HpController>();
         hp.isShild = isShild;
@@ -114,14 +114,14 @@ public class PlayerController : MonoBehaviour
         isShild = false;
         hp.isShild = isShild;
         yield return new WaitForSeconds(boundTime);
-
         isShildCharge = true;
         Shild.gameObject.SetActive(!isShildCharge);
+        Charging.gameObject.SetActive(!isShildCharge);
         ShildCharge.gameObject.SetActive(isShildCharge);
     }
     private void UpdateJumpAbleStatus()
     {
-        grounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.001f, groundCheckLayer);
+        grounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.1f, groundCheckLayer);
         isWallRight = Physics2D.OverlapCapsule(
             wallCheckRight.position,                  // 중심
             new Vector2(0.2f, 0.6f),                  // 캡슐 크기 (너비, 높이)
@@ -135,23 +135,22 @@ public class PlayerController : MonoBehaviour
             CapsuleDirection2D.Vertical,
             0f,
             groundCheckLayer);
-        if (grounded)
+        if (isWallRight && Input.GetKey(KeyCode.D) || isWallLeft && Input.GetKey(KeyCode.A))
         {
-            moveSpeed = speed;
+            float slideSpeed = -2f;
+            if (Input.GetKey(KeyCode.W))
+                slideSpeed = -0.5f;
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, slideSpeed, float.MaxValue)); //벽 슬라이드
+            moveSpeed = 0f;
         }
-        else if (isWallRight || isWallLeft)
+        else if(isWallRight || isWallLeft)
             moveSpeed = 1.5f;
-
-        jumpAble = grounded || isWallLeft || isWallRight; //현재 문제점, 꼭지점에 닿으면 grounded, isWall 전부 false상태
+        else
+            moveSpeed = speed;
         
-    }
 
-    private void SlideWall()
-    {
-        if (!grounded && (isWallLeft || isWallRight))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -2f, float.MaxValue)); // 느리게 떨어지기
-        }
+        jumpAble = grounded || isWallLeft || isWallRight;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
