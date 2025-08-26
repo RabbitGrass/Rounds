@@ -31,16 +31,21 @@ public class PlayerController : MonoBehaviour
     public float boundTime;
     private bool isShildCharge = true;
     public bool isShild = false;
+
+    public LayerMask ObstacleChecklayer;
+    private bool isObstacle = false;
     private void Start()
     {
-        wallJumpSpeed = jumpPower * 0.5f;
-        wallJumpPower = jumpPower - 0.5f;
+        wallJumpSpeed = 3.5f;
+        wallJumpPower = 4.5f;
         moveSpeed = speed;
 
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.K))
+            rb.AddForce(new Vector2(100, 0), ForceMode2D.Impulse);
         if (jumpAble && Input.GetKeyDown(KeyCode.Space)) //GetKeyDown은 반드시 Update에서 써야한다.
         {
             float wallJumpDirection = 0;
@@ -91,7 +96,7 @@ public class PlayerController : MonoBehaviour
         vector.x = h * moveSpeed;
 
 
-        if(isWallJumping && !grounded)
+        if (isWallJumping && !grounded || isObstacle)
         {
             //만약 벽 점프가 활성화 된 상태에서 땅에 붙어있지 않다면
         }
@@ -121,7 +126,7 @@ public class PlayerController : MonoBehaviour
     }
     private void UpdateJumpAbleStatus()
     {
-        grounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.1f, groundCheckLayer);
+        grounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.01f, groundCheckLayer);
         isWallRight = Physics2D.OverlapCapsule(
             wallCheckRight.position,                  // 중심
             new Vector2(0.2f, 0.6f),                  // 캡슐 크기 (너비, 높이)
@@ -153,6 +158,14 @@ public class PlayerController : MonoBehaviour
         
     }
 
+ 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == ObstacleChecklayer)
+        {
+            isObstacle = false;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("MapEnd"))

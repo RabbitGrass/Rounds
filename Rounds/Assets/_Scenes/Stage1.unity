@@ -931,9 +931,9 @@ GameObject:
   - component: {fileID: 641031857}
   - component: {fileID: 641031856}
   - component: {fileID: 641031855}
-  m_Layer: 3
+  m_Layer: 10
   m_Name: Object
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1071,8 +1071,8 @@ Transform:
   m_GameObject: {fileID: 641031854}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.73, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: -2.72, y: -1.14, z: 0}
+  m_LocalScale: {x: 0.5, y: 3, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1254,7 +1254,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1407
+    m_Bits: 3455
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1359,8 +1359,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 918131618060840503, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: isShild
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 918131618060840503, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 918131618060840503, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: ObstacleChecklayer.m_Bits
+      value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 2040299694933935614, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
       propertyPath: m_Name
@@ -1412,7 +1420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7645333683122438946, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.31
+      value: 5.56
       objectReference: {fileID: 0}
     - target: {fileID: 7645333683122438946, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2603,9 +2611,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 803316640688870647, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1681252573069813445, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
       propertyPath: m_Name
       value: Spin
+      objectReference: {fileID: 0}
+    - target: {fileID: 1681252573069813445, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1681252573069813445, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855437703561950510, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
+      propertyPath: damage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1855437703561950510, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
+      propertyPath: knockbackForce
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7030832108376940047, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
       propertyPath: m_LocalPosition.x

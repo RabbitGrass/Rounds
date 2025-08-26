@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5593141624050473967}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: wallCheckLeft
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8905803020788681863}
   - component: {fileID: 484866932179147866}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: armAndGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 7207741380186038517}
   - component: {fileID: 6627476163251192155}
   - component: {fileID: 4610353923886039989}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Shild
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5067,7 +5067,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &4851344247624861839
 CapsuleCollider2D:
@@ -5123,7 +5123,7 @@ MonoBehaviour:
   groundCheckTransform: {fileID: 6411915123301224706}
   groundCheckLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 1032
   wallCheckRight: {fileID: 1117926124533735440}
   wallCheckLeft: {fileID: 5593141624050473967}
   ShildCharge: {fileID: 6709449769140024133}
@@ -5131,6 +5131,9 @@ MonoBehaviour:
   Charging: {fileID: 6634462326747008672}
   boundTime: 5
   isShild: 0
+  ObstacleChecklayer:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!114 &5757402773531663058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5196,7 +5199,7 @@ GameObject:
   - component: {fileID: 1750843162810631773}
   - component: {fileID: 6634462326747008672}
   - component: {fileID: 3221958317342262497}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Charge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10025,7 +10028,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5410431473108340278}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GunTranslate
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
@@ -10058,7 +10061,7 @@ GameObject:
   - component: {fileID: 7877200381390589406}
   - component: {fileID: 8600698633206542576}
   - component: {fileID: 4810149090834073063}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Bound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14891,7 +14894,7 @@ GameObject:
   - component: {fileID: 7339436908317304967}
   - component: {fileID: 2818173908759155525}
   - component: {fileID: 2910081648878852748}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: HpBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14964,7 +14967,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6411915123301224706}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
@@ -14997,7 +15000,7 @@ GameObject:
   - component: {fileID: 1408874823245167553}
   - component: {fileID: 6700648815852326946}
   - component: {fileID: 5210671441162380841}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PlayerHp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15071,7 +15074,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1117926124533735440}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: wallCheckRight
   m_TagString: Untagged
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -15104,7 +15107,7 @@ GameObject:
   - component: {fileID: 1255011431319418760}
   - component: {fileID: 6709449769140024133}
   - component: {fileID: 816642253872257112}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ShildCharge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19935,7 +19938,7 @@ GameObject:
   - component: {fileID: 5215175532830212074}
   - component: {fileID: 8577803104664303456}
   - component: {fileID: 3917667794047232852}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: HpCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
