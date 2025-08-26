@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObstacleController : MonoBehaviour
 {
     public float damage;
-    public float knockbackForce = 10f; // 원하는 세기로 조절
+    public float knockbackForce; // 원하는 세기로 조절
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -20,7 +20,10 @@ public class ObstacleController : MonoBehaviour
         if (rb != null)
         {
             Vector2 direction = (collision.transform.position - transform.position).normalized;
-            rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+            Debug.Log(direction);
+            rb.velocity = Vector2.zero;
+            //rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+            rb.velocity = direction * knockbackForce;
         }
     }
 }

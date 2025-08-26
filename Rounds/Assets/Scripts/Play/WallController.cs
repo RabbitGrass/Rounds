@@ -7,7 +7,7 @@ public class WallController : MonoBehaviour
 {
     public float bounceForce;
     private float bounce;
-    public Vector2 bounceDirection = Vector2.zero; // 벽마다 Inspector에서 설정 (ex: 왼쪽 벽은 (1,0))
+    public Vector2 bounceDirection; // 벽마다 Inspector에서 설정 (ex: 왼쪽 벽은 (1,0))
     Rigidbody2D rb;
 
     private void OnTriggerEnter2D(Collider2D other)
