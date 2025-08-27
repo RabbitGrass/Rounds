@@ -131,7 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 13030659}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MapWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1049,7 +1049,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1314095905
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 4c268fde65a78464db9923e84c22397c, type: 3}
   m_Color: {r: 0.6886792, g: 0.41728026, b: 0.27612138, a: 1}
@@ -1358,6 +1358,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 484866932179147866, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: m_Color.g
+      value: 0.42352942
+      objectReference: {fileID: 0}
+    - target: {fileID: 484866932179147866, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 918131618060840503, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
       propertyPath: isShild
       value: 0
@@ -1466,6 +1474,18 @@ PrefabInstance:
       propertyPath: Col
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8886041982408435067, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886041982408435067, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: m_Color.g
+      value: 0.41983247
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886041982408435067, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1482,7 +1502,7 @@ GameObject:
   - component: {fileID: 1464020586}
   - component: {fileID: 1464020585}
   - component: {fileID: 1464020587}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MapWallRight
   m_TagString: MapEnd
   m_Icon: {fileID: 0}
@@ -1634,7 +1654,7 @@ GameObject:
   - component: {fileID: 1474091401}
   - component: {fileID: 1474091400}
   - component: {fileID: 1474091402}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MapWallLeft
   m_TagString: MapEnd
   m_Icon: {fileID: 0}
@@ -1881,7 +1901,7 @@ GameObject:
   - component: {fileID: 1724387831}
   - component: {fileID: 1724387830}
   - component: {fileID: 1724387832}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MapWallNorth
   m_TagString: MapEnd
   m_Icon: {fileID: 0}
@@ -1978,7 +1998,7 @@ GameObject:
   - component: {fileID: 1746623768}
   - component: {fileID: 1746623767}
   - component: {fileID: 1746623769}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: MapWallSouth
   m_TagString: MapEnd
   m_Icon: {fileID: 0}
@@ -2206,7 +2226,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -260443395
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4c268fde65a78464db9923e84c22397c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2437,6 +2457,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 484866932179147866, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484866932179147866, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6509804
+      objectReference: {fileID: 0}
     - target: {fileID: 918131618060840503, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2535,7 +2563,19 @@ PrefabInstance:
       objectReference: {fileID: 1470674850}
     - target: {fileID: 8127820861658314286, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
       propertyPath: Col
-      value: Orange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886041982408435067, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886041982408435067, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6509477
+      objectReference: {fileID: 0}
+    - target: {fileID: 8886041982408435067, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2611,6 +2651,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 803316640688870647, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1681252573069813445, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
       propertyPath: m_Name
       value: Spin
@@ -2654,6 +2698,10 @@ PrefabInstance:
     - target: {fileID: 7030832108376940047, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448154948035637631, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
+      propertyPath: m_Radius
+      value: 3.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

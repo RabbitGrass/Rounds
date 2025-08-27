@@ -8,8 +8,7 @@ public class PoisonCard : MonoBehaviour, IsSkills
     {
         int bulletCount = 0;
         bulletCount = PlayerPrefs.GetInt($"BulletCount{player}");
-        if (bulletCount > 1)
-            bulletCount--;
+        bulletCount--;
         PlayerPrefs.SetInt($"BulletCount{player}", bulletCount);
         bulletCount = PlayerPrefs.GetInt($"Poison{player}");
         bulletCount++;

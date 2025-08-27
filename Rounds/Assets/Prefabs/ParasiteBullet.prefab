@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8132708190686569916}
   - component: {fileID: 526339771004081677}
   - component: {fileID: 3523883140926816046}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: ParasiteBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,14 +27,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4259937976550413867}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.949, y: -0.276, z: 0.04910595}
-  m_LocalScale: {x: 0.41664, y: 0.41664, z: 0.41664}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1229690951834917250}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8132708190686569916
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -124,10 +124,10 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -467528609
+  m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Time: 2
+  m_Time: 1
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 1229690951834917250}
   - component: {fileID: 6742530939625608924}
   - component: {fileID: 1412011319308373736}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4993,9 +4993,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -467528609
+  m_SortingLayer: 4
+  m_SortingOrder: 2
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0

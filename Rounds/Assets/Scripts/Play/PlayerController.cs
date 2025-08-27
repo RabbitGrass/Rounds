@@ -158,6 +158,10 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    void Obstacle()
+    {
+        isObstacle = false;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // 충돌한 오브젝트의 레이어를 LayerMask에 포함되는지 확인
@@ -165,21 +169,26 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Obstacle");
             isObstacle = true;
+            Invoke("Obstacle", 0.1f);
         }
     }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (((1 << collision.gameObject.layer) & ObstacleChecklayer) != 0)
-        {
-            isObstacle = false;
-        }
-    }
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    if (((1 << collision.gameObject.layer) & ObstacleChecklayer) != 0)
+    //    {
+    //        isObstacle = false;
+    //    }
+    //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("MapEnd"))
         {
-            isWallJumping = true;
-            wallJumpTimer = wallJumpDuration;
+            //isWallJumping = true;
+            //wallJumpTimer = wallJumpDuration;
+            isObstacle = true;
+            Invoke("Obstacle", 0.1f);
         }
     }
+
+   
 }

@@ -14,6 +14,8 @@ public class GameMannager : MonoBehaviour
     int BWin;
 
     public GameObject[] Player;
+
+    private bool RoundEnd;
     void Start()
     {
         int Col = PlayerPrefs.GetInt("Player");
@@ -40,6 +42,9 @@ public class GameMannager : MonoBehaviour
 
     public void WhoAreWin(GameObject player)
     {
+        if (RoundEnd)
+            return;
+        RoundEnd = true;
         PlayerColor playerColor = player.GetComponent<PlayerColor>();
         int col = playerColor.Col;
 

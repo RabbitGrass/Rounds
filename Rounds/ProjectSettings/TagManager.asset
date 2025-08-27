@@ -47,11 +47,11 @@ TagManager:
   - name: Background
     uniqueID: 3092467765
     locked: 0
-  - name: Floor
-    uniqueID: 4034523901
-    locked: 0
   - name: Object
     uniqueID: 1314095905
+    locked: 0
+  - name: Floor
+    uniqueID: 4034523901
     locked: 0
   - name: Bullet
     uniqueID: 3827438687

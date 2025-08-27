@@ -8,7 +8,7 @@ public class ParasiteCard : MonoBehaviour, IsSkills
     {
         float BulletDmg = 0;
         BulletDmg = PlayerPrefs.GetFloat($"BulletDmg{player}");
-        BulletDmg -= 0.5f;
+        BulletDmg -= 1f;
         PlayerPrefs.SetFloat($"BulletDmg{player}", BulletDmg);
         int i = 0;
         i = PlayerPrefs.GetInt($"Parasite{player}");

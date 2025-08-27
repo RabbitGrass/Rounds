@@ -22,16 +22,11 @@ public class Bullet : MonoBehaviour
         //Debug.Log(PlayerPrefs.HasKey("Leech"));
         rb = GetComponent<Rigidbody2D>();
         dmg = PlayerPrefs.GetFloat($"BulletDmg{col}");
+        if (dmg < 0.1f)
+            dmg = 0.1f;
         if (PlayerPrefs.HasKey($"FastBall{col}"))
         {
             rb.gravityScale = 0;
-        }
-
-        pos = PlayerPrefs.GetInt($"Poison{col}");
-        if(pos > 0)
-        {
-            EffectSetting(2);    
-            poison.enabled = true;
         }
 
         par = PlayerPrefs.GetInt($"Parasite{col}");
@@ -41,6 +36,13 @@ public class Bullet : MonoBehaviour
             parasite.enabled = true;
             parasite.player = player;
         }
+        pos = PlayerPrefs.GetInt($"Poison{col}");
+        if(pos > 0)
+        {
+            EffectSetting(2);    
+            poison.enabled = true;
+        }
+
 
         if(pos <= 0 && par <= 0)
         {
