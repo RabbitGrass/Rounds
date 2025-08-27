@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class PlayerColor : MonoBehaviour
 {
-    public string Col;
+    public int Col;
 }

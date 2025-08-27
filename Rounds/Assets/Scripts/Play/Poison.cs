@@ -8,7 +8,8 @@ public class Poison : MonoBehaviour
     public Poison poison;
     void Start()
     {
-        dmg = PlayerPrefs.GetInt("Poison");
+        int pos = gameObject.GetComponent<Bullet>().pos;
+        dmg = pos;
 
         dmg *= 0.25f;
         Debug.Log("Æ÷ÀÌÁð");

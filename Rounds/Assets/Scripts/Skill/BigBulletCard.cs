@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class BigBulletCard : MonoBehaviour, IsSkills
 {
-    public void DoSkill()
+    public void DoSkill(int player)
     {
-        Debug.Log("ºòºÒ¸´");
+        int i = PlayerPrefs.GetInt($"BigBullet{player}");
+        i++;
+        PlayerPrefs.SetInt($"BigBullet{player}", i);
     }
 }

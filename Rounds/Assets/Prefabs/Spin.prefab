@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 803316640688870647}
   - component: {fileID: 8448154948035637631}
   - component: {fileID: 1855437703561950510}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Spin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,4 +161,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1751a8466414a94d84bc5177819fd80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 4
+  knockbackForce: 150

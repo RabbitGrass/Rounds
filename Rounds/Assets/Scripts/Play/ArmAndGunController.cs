@@ -33,12 +33,13 @@ public class ArmAndGunController : MonoBehaviour
     //private Transform[] bulletCheckPos;
     void Start()
     {
-        bulletCount = PlayerPrefs.GetInt("BulletCount");
+        int col = gameObject.GetComponent<PlayerColor>().Col;
+        bulletCount = PlayerPrefs.GetInt($"BulletCount{col}");
         if (bulletCount <= 0)
             bulletCount = 1;
-        ReloadTime = PlayerPrefs.GetFloat("BulletReloadTime");
+        ReloadTime = PlayerPrefs.GetFloat($"BulletReloadTime{col}");
         Reload = ReloadTime;
-        bulletSpeed = PlayerPrefs.GetFloat("BulletSpeed");
+        bulletSpeed = PlayerPrefs.GetFloat($"BulletSpeed{col}");
         cam = Camera.main;
         bulletOver = new List<GameObject>();
         bulletOut = new List<GameObject>();

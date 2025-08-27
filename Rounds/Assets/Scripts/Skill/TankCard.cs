@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class TankCard : MonoBehaviour, IsSkills
 {
-    public void DoSkill()
+    public void DoSkill(int player)
     {
-        Debug.Log("≈ ≈© Ω««‡");
         float hp = 0;
-        hp = PlayerPrefs.GetFloat("HP");
+        hp = PlayerPrefs.GetFloat($"HP{player}");
         hp += hp;
-        PlayerPrefs.SetFloat("HP", hp);
+        PlayerPrefs.SetFloat($"HP{player}", hp);
 
         float Reload = 0;
-        Reload = PlayerPrefs.GetFloat("BulletReloadTime");
+        Reload = PlayerPrefs.GetFloat($"BulletReloadTime{player}");
         Reload += 0.5f;
-        PlayerPrefs.SetFloat("BulletReloadTime", Reload);
+        PlayerPrefs.SetFloat($"BulletReloadTime{player}", Reload);
     }
 }

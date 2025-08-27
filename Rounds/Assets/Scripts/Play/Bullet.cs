@@ -6,39 +6,65 @@ public class Bullet : MonoBehaviour
 {
     private float dmg;
     public GameObject player;
+    public int col;
     public Poison poison;
+    public int pos;
     public Parasite parasite;
+    public int par;
     private Rigidbody2D rb;
     private HpController leech;
     private int bounce;
+    public GameObject[] bulletEff;
     private void Start()
     {
+        col = player.GetComponent<PlayerColor>().Col;
         leech = player.GetComponent<HpController>();
         //Debug.Log(PlayerPrefs.HasKey("Leech"));
         rb = GetComponent<Rigidbody2D>();
-        dmg = PlayerPrefs.GetFloat("BulletDmg");
-        if (PlayerPrefs.HasKey("FastBall"))
+        dmg = PlayerPrefs.GetFloat($"BulletDmg{col}");
+        if (PlayerPrefs.HasKey($"FastBall{col}"))
         {
             rb.gravityScale = 0;
         }
 
-        int pos = PlayerPrefs.GetInt("Poison");
+        pos = PlayerPrefs.GetInt($"Poison{col}");
         if(pos > 0)
         {
+            EffectSetting(2);    
             poison.enabled = true;
         }
 
-        int pas = PlayerPrefs.GetInt("Parasite");
-        if (pas > 0)
+        par = PlayerPrefs.GetInt($"Parasite{col}");
+        if (par > 0)
         {
+            EffectSetting(3);
             parasite.enabled = true;
             parasite.player = player;
+        }
+
+        if(pos <= 0 && par <= 0)
+        {
+            EffectSetting(0);
+        }
+
+        int big = PlayerPrefs.GetInt($"BigBullet{col}");
+        if(big > 0)
+        {
+            EffectSetting(1);
         }
     }
 
     private void OnEnable()
     {
-        bounce = PlayerPrefs.GetInt("Bounce");
+        bounce = PlayerPrefs.GetInt($"Bounce{col}");
+    }
+
+    void EffectSetting(int num)
+    {
+        GameObject Effect = Instantiate(bulletEff[num]);
+        Effect.transform.parent = gameObject.transform;
+        Effect.transform.localPosition = Vector2.zero;
+        Effect.transform.localRotation = Quaternion.identity;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -49,7 +75,7 @@ public class Bullet : MonoBehaviour
             php.PlayerHpValue(dmg);
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (PlayerPrefs.HasKey("Leech") && collision.gameObject != player)//리치 스킬을 가졌을 경우 실행
+            if (PlayerPrefs.HasKey($"Leech{col}") && collision.gameObject != player)//리치 스킬을 가졌을 경우 실행
             {
                 leech.PlayerHpValue(-(dmg * (75 * 0.01f)));
             }

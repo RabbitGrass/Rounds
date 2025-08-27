@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class GrowCard : MonoBehaviour, IsSkills
 {
-    public void DoSkill()
+    public void DoSkill(int player)
     {
         int i = 0;
-        i = PlayerPrefs.GetInt("Grow");
+        i = PlayerPrefs.GetInt($"Grow{player}");
         i++;
-        PlayerPrefs.SetInt("Grow", i);
+        PlayerPrefs.SetInt($"Grow{player}", i);
     }
 }

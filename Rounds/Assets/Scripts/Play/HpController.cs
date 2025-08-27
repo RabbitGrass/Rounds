@@ -15,7 +15,10 @@ public class HpController : MonoBehaviour
     private void Start()
     {
         if(gameObject.layer == LayerMask.NameToLayer("Player"))
-            MaxHp = PlayerPrefs.GetFloat("HP");
+        {
+            int col = gameObject.GetComponent<PlayerColor>().Col;
+            MaxHp = PlayerPrefs.GetFloat($"HP{col}");
+        }
         HpValue = MaxHp;
         Debug.Log("MaxHp : " + MaxHp);
     }

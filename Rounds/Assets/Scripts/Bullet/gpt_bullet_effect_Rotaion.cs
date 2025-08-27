@@ -8,8 +8,8 @@ public class EffectFollowRotation : MonoBehaviour
 
     public void Start()
     {
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(Vector2.left * 100);
+        //Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        //rb.AddForce(Vector2.left * 100);
     }
     void Update()
     {

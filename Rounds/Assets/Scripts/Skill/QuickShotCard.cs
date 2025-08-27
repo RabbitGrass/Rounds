@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class QuickShotCard : MonoBehaviour, IsSkills
 {
-    public void DoSkill()
+    public void DoSkill(int player)
     {
         float Speed;
-        Speed = PlayerPrefs.GetFloat("BulletSpeed");
+        Speed = PlayerPrefs.GetFloat($"BulletSpeed{player}");
         Speed *= 1.5f;
-        PlayerPrefs.SetFloat("BulletSpeed", Speed);
+        PlayerPrefs.SetFloat($"BulletSpeed{player}", Speed);
         float Reload;
-        Reload = PlayerPrefs.GetFloat("BulletReloadTime");
+        Reload = PlayerPrefs.GetFloat($"BulletReloadTime{player}");
         Reload += 0.25f;
-        PlayerPrefs.SetFloat("BulletReloadTime", Reload);
+        PlayerPrefs.SetFloat($"BulletReloadTime{player}", Reload);
     }
 }

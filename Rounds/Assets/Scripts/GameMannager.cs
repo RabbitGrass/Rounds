@@ -41,16 +41,19 @@ public class GameMannager : MonoBehaviour
     public void WhoAreWin(GameObject player)
     {
         PlayerColor playerColor = player.GetComponent<PlayerColor>();
+        int col = playerColor.Col;
 
-        if(playerColor.Col == "Blue")//패배자의 색
+        if(col == 1)//패배자의 색
         {
             OrangeWinCount[OWin++].gameObject.SetActive(true);
             PlayerPrefs.SetInt("OrangeWinCount", OWin);
+            PlayerPrefs.SetInt("ChoicePlayer", col);
         }
         else
         {
             BlueWinCount[BWin++].gameObject.SetActive(true);
             PlayerPrefs.SetInt("BlueWinCount", BWin);
+            PlayerPrefs.SetInt("ChoicePlayer", col);
         }
 
         if(OWin >= 5 || BWin >= 5)

@@ -1464,7 +1464,7 @@ PrefabInstance:
       objectReference: {fileID: 1470674850}
     - target: {fileID: 8127820861658314286, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
       propertyPath: Col
-      value: Blue
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2611,29 +2611,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 803316640688870647, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
-      propertyPath: m_Mass
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 1681252573069813445, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
       propertyPath: m_Name
       value: Spin
-      objectReference: {fileID: 0}
-    - target: {fileID: 1681252573069813445, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1681252573069813445, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855437703561950510, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
-      propertyPath: damage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1855437703561950510, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
-      propertyPath: knockbackForce
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7030832108376940047, guid: 3d6686ceac55d2740a95495bce1d18e3, type: 3}
       propertyPath: m_LocalPosition.x

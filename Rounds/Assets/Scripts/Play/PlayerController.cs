@@ -158,10 +158,18 @@ public class PlayerController : MonoBehaviour
         
     }
 
- 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // 충돌한 오브젝트의 레이어를 LayerMask에 포함되는지 확인
+        if (((1 << collision.gameObject.layer) & ObstacleChecklayer) != 0) //1 << layerIndex → 해당 레이어를 비트로 변환.
+        {
+            Debug.Log("Obstacle");
+            isObstacle = true;
+        }
+    }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == ObstacleChecklayer)
+        if (((1 << collision.gameObject.layer) & ObstacleChecklayer) != 0)
         {
             isObstacle = false;
         }

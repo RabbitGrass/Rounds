@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IsSkills
 {
-    void DoSkill();
+    void DoSkill(int i);
 }

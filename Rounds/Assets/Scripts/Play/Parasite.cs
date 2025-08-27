@@ -9,7 +9,8 @@ public class Parasite : MonoBehaviour
     public Parasite parasite;
     void Start()
     {
-        dmg = PlayerPrefs.GetInt("Parasite");
+        int par = gameObject.GetComponent<Bullet>().par;
+        dmg = par;
 
         dmg *= 0.25f;
         Debug.Log("패러사이트");
