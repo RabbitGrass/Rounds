@@ -634,7 +634,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 6.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2463,59 +2463,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 484866932179147866, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
       propertyPath: m_Color.g
-      value: 0.6509804
+      value: 0.5647059
       objectReference: {fileID: 0}
-    - target: {fileID: 918131618060840503, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
-      propertyPath: m_Enabled
-      value: 0
+    - target: {fileID: 484866932179147866, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2040299694933935614, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
       propertyPath: m_Name
       value: Player1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757402773531663058, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757402773531663058, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
-      propertyPath: bulletCheckY
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757402773531663058, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
-      propertyPath: bulletCheckObj
-      value: 
-      objectReference: {fileID: 4223323835529101174, guid: 1091103cbdf8bab46940d273f80870cf, type: 3}
-    - target: {fileID: 5757402773531663058, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
-      propertyPath: bulletCheck.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757402773531663058, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
-      propertyPath: bulletCheckX.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757402773531663058, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
-      propertyPath: bulletCheck.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757402773531663058, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
-      propertyPath: bulletCheck.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757402773531663058, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
-      propertyPath: bulletCheck.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757402773531663058, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
-      propertyPath: bulletCheckX.Array.data[0]
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757402773531663058, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
-      propertyPath: bulletCheckX.Array.data[1]
-      value: 0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 5757402773531663058, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
-      propertyPath: bulletCheckX.Array.data[2]
-      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 7645333683122438946, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2561,17 +2517,13 @@ PrefabInstance:
       propertyPath: GameMannager
       value: 
       objectReference: {fileID: 1470674850}
-    - target: {fileID: 8127820861658314286, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
-      propertyPath: Col
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8886041982408435067, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8886041982408435067, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
       propertyPath: m_Color.g
-      value: 0.6509477
+      value: 0.56652045
       objectReference: {fileID: 0}
     - target: {fileID: 8886041982408435067, guid: 53dd4c76940b47d4ea5518f4970c4032, type: 3}
       propertyPath: m_Color.r

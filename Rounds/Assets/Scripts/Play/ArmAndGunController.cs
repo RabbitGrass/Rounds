@@ -31,6 +31,11 @@ public class ArmAndGunController : MonoBehaviour
     public float[] bulletCheckX;
     public float bulletCheckY;
     //private Transform[] bulletCheckPos;
+
+    //리로드 사운드
+    public AudioClip ReloadSound;
+    //총알 발사 사운드
+    public AudioClip ShootingSound;
     void Start()
     {
         int col = gameObject.GetComponent<PlayerColor>().Col;
@@ -114,6 +119,7 @@ public class ArmAndGunController : MonoBehaviour
         }
 
 
+        //총알 발사
         if(bulletOver.Count > 0 && Input.GetKeyDown(KeyCode.Mouse0))
         {
             GameObject bullet = bulletOver[0];
@@ -124,14 +130,16 @@ public class ArmAndGunController : MonoBehaviour
             
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
-            rb.AddForce(direction * bulletSpeed);
+            rb.AddForce(direction * bulletSpeed); //총알 속도, 정확히는 발사되는 총알에 가해지는 힘
             bulletCheck[bulletOver.Count].SetActive(false);//이미 bulletOver의 개수가 -1상태이기 때문에 굳이 -1할 필요 없음
             bulletOut.Add(bullet);
+
+            AudioSource.PlayClipAtPoint(ShootingSound, transform.position);
 
             Reload = ReloadTime;
         }
 
-
+        //탄창 리로드
         Reload -= Time.deltaTime;
         if( Reload <= 0 && bulletOver.Count < bulletCount) //코루틴을 쓰지 않는 이유는 총을 쏠 때마다 리로드 시간을 초기화 시켜야하기 때문
         {
@@ -139,6 +147,7 @@ public class ArmAndGunController : MonoBehaviour
         }
     }
 
+    //탄창 생성
     static GameObject BulletCreate(GameObject BulletFactory, GameObject gameObject)
     {
         GameObject bullet = Instantiate(BulletFactory);
@@ -149,6 +158,7 @@ public class ArmAndGunController : MonoBehaviour
     }
     void BulletReload()
     {
+        AudioSource.PlayClipAtPoint(ReloadSound, transform.position);
         int i = 0;
         while (bulletOver.Count < bulletCount)
         {

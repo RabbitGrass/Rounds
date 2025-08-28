@@ -11,7 +11,7 @@ public class HpController : MonoBehaviour
     private float HpValue;
     public bool isShild = false;
     public GameMannager GameMannager;
-
+    public AudioSource hitAudio;
     private void Start()
     {
         if(gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -32,12 +32,14 @@ public class HpController : MonoBehaviour
 
         if (!gameObject.CompareTag("Player"))
         {
-            Debug.Log(HpValue);
+       
             if(HpValue <= 0)
                 Destroy(gameObject);
-            Debug.Log(HpValue);
+
             return;
         }
+        //AudioSource.PlayClipAtPoint(hitAudio, transform.position, 1f);
+        hitAudio.Play();
         HpBar.fillAmount = HpValue / MaxHp;
         if (HpValue <= 0)
         {

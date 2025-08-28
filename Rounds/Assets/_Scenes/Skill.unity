@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 293861607}
   - component: {fileID: 293861606}
   - component: {fileID: 293861608}
+  - component: {fileID: 293861609}
   m_Layer: 0
   m_Name: Skill
   m_TagString: Untagged
@@ -173,16 +174,8 @@ MonoBehaviour:
   - {fileID: 1884538471074126471, guid: 4d4b6fb1f1deb934e9a58ed8d51a2b73, type: 3}
   - {fileID: 6984524359419348766, guid: 707fdf8be805c2b4a92004c200adb5e2, type: 3}
   CardChoice: {fileID: 293861608}
-  CardImage:
-  - {fileID: 21300000, guid: 25280c5fbb0a98b488bdf5b9f8edea18, type: 3}
-  - {fileID: 21300000, guid: 95bb4380920ced44eac17ac409f5dadc, type: 3}
-  - {fileID: 21300000, guid: a9eb0ec8157c43d448d79e87678b33eb, type: 3}
-  - {fileID: 21300000, guid: e282ecd750b89d040a6402b3d4c56fd4, type: 3}
-  - {fileID: 21300000, guid: 326395550db497f40bc3167d5a9dbd30, type: 3}
-  - {fileID: 21300000, guid: 2522a05b2a8eb0043933b61bf0ca6fad, type: 3}
-  - {fileID: 21300000, guid: 6dfc4303bee51504e9bf92dcacac6098, type: 3}
-  - {fileID: 21300000, guid: 3da6f0a87b78f4a4589f0c816eb8efd9, type: 3}
-  - {fileID: 21300000, guid: b65c0208da1e4d148b89b4364efa198e, type: 3}
+  ChoicePlayer: 0
+  CardSound: {fileID: 293861609}
 --- !u!4 &293861607
 Transform:
   m_ObjectHideFlags: 0
@@ -224,6 +217,102 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &293861609
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293861605}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 04a08498de4804732a12c93fd4a6380e, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &760720435
 GameObject:
   m_ObjectHideFlags: 0

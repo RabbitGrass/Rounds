@@ -27,10 +27,10 @@ public class ObstacleController : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        HpController hp = collision.gameObject.GetComponent<HpController>();
-        if (hp != null)
-            hp.PlayerHpValue(damage);
-    }
+    //private void OnCollisionStay2D(Collision2D collision)
+    //{
+    //    HpController hp = collision.gameObject.GetComponent<HpController>();
+    //    if (hp != null)
+    //        hp.PlayerHpValue(damage);
+    //}
 }

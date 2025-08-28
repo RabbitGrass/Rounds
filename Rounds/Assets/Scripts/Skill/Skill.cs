@@ -24,6 +24,8 @@ public class Skill : MonoBehaviour
     private bool isStart;
 
     public int ChoicePlayer;
+
+    public AudioSource CardSound;
     private void Start()
     {
         if (!PlayerPrefs.HasKey("ChoicePlayer"))
@@ -51,6 +53,7 @@ public class Skill : MonoBehaviour
             skillCard[choice].transform.localScale = baseScale;
             choice++;
             skillCard[choice].transform.localScale = Vector3.one;
+            CardSound.Play();
         }
 
         if (choice > 0 && Input.GetKeyDown(KeyCode.A))
@@ -58,6 +61,7 @@ public class Skill : MonoBehaviour
             skillCard[choice].transform.localScale = baseScale;
             choice--;
             skillCard[choice].transform.localScale = Vector3.one;
+            CardSound.Play();
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && !isChoice)

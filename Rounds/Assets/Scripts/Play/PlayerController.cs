@@ -126,6 +126,7 @@ public class PlayerController : MonoBehaviour
     }
     private void UpdateJumpAbleStatus()
     {
+
         grounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.01f, groundCheckLayer);
         isWallRight = Physics2D.OverlapCapsule(
             wallCheckRight.position,                  // 중심
@@ -149,7 +150,7 @@ public class PlayerController : MonoBehaviour
             moveSpeed = 0f;
         }
         else if(isWallRight || isWallLeft)
-            moveSpeed = 1.5f;
+            moveSpeed = 1.5f; //벽에[ 붙어있을 때에는 속도를 1.5f로 줄인다. 자연스러운 벽 점프를 위함
         else
             moveSpeed = speed;
         
