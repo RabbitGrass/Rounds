@@ -67,6 +67,8 @@ public class ArmAndGunController : MonoBehaviour
 
     void Update()
     {
+        if (GameMannager.gm.gState == GameMannager.GameState.RoundIdle)
+            return;
         // 마우스 위치 가져오기
         Vector3 mouseWorldPos = cam.ScreenToWorldPoint(Input.mousePosition);
         mouseWorldPos.z = 0;

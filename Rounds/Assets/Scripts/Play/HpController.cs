@@ -12,6 +12,8 @@ public class HpController : MonoBehaviour
     public bool isShild = false;
     public GameMannager GameMannager;
     public AudioSource hitAudio;
+
+    public Animator DamagedAni;
     private void Start()
     {
         if(gameObject.layer == LayerMask.NameToLayer("Player"))
@@ -39,7 +41,10 @@ public class HpController : MonoBehaviour
             return;
         }
         //AudioSource.PlayClipAtPoint(hitAudio, transform.position, 1f);
-        hitAudio.Play();
+        if (gameObject.activeSelf) {
+            DamagedAni.SetTrigger("Damaged");
+            hitAudio.Play();
+        }
         HpBar.fillAmount = HpValue / MaxHp;
         if (HpValue <= 0)
         {
@@ -72,7 +77,6 @@ public class HpController : MonoBehaviour
 
             if (BulletPlayer != gameObject)
             {
-                Debug.Log(gameObject.name);
                 hp = BulletPlayer.GetComponent<HpController>();
                 hp.PlayerHpValue(-parasite);
             }            

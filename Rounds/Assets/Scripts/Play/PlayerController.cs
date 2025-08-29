@@ -44,6 +44,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (GameMannager.gm.gState == GameMannager.GameState.RoundIdle)
+            return;
+
         if (Input.GetKeyDown(KeyCode.K))
             rb.AddForce(new Vector2(100, 0), ForceMode2D.Impulse);
         if (jumpAble && Input.GetKeyDown(KeyCode.Space)) //GetKeyDown은 반드시 Update에서 써야한다.
@@ -89,6 +92,9 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() //fixedUpdate는 주로 물리엔진과 연관이 된 애들만 넣는다.
     {
+        if (GameMannager.gm.gState == GameMannager.GameState.RoundIdle)
+            return;
+
         float h = Input.GetAxis("Horizontal");
 
         Vector2 vector = rb.velocity;

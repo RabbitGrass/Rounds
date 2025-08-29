@@ -53,12 +53,19 @@ public class Bullet : MonoBehaviour
         if(big > 0)
         {
             EffectSetting(1);
+            BigBulletCol(big);
         }
     }
 
     private void OnEnable()
     {
         bounce = PlayerPrefs.GetInt($"Bounce{col}");
+    }
+
+    void BigBulletCol(int n)
+    {
+        CircleCollider2D col = gameObject.GetComponent<CircleCollider2D>();
+        col.radius *= (1f + n);
     }
 
     void EffectSetting(int num)
