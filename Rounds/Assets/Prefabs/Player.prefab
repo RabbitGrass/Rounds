@@ -5136,6 +5136,14 @@ MonoBehaviour:
   ObstacleChecklayer:
     serializedVersion: 2
     m_Bits: 2048
+  FootSound:
+  - {fileID: 8300000, guid: 6f24293f5f272b449ba74c4852d65d7c, type: 3}
+  - {fileID: 8300000, guid: 08647b02010786143a811ef3b422e5f8, type: 3}
+  - {fileID: 8300000, guid: 2c9dc094305822f40989d972147596ea, type: 3}
+  - {fileID: 8300000, guid: 62c8489ded9fa6c45b33c159cb3fab89, type: 3}
+  - {fileID: 8300000, guid: 345e5e09ec70ed542b91a060cf5632b5, type: 3}
+  WalkSoundTime: 0.3
+  JumpSound: {fileID: 8300000, guid: 70bfbaaebebfb0d4ba87a5e9947d5ad3, type: 3}
 --- !u!114 &5757402773531663058
 MonoBehaviour:
   m_ObjectHideFlags: 0

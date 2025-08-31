@@ -34,6 +34,13 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask ObstacleChecklayer;
     private bool isObstacle = false;
+
+    public AudioClip[] FootSound;
+    private int WalkSound;
+    public float WalkSoundTime;
+    private float walkTime;
+
+    public AudioClip JumpSound;
     private void Start()
     {
         wallJumpSpeed = 3.5f;
@@ -46,9 +53,6 @@ public class PlayerController : MonoBehaviour
     {
         if (GameMannager.gm.gState == GameMannager.GameState.RoundIdle)
             return;
-
-        if (Input.GetKeyDown(KeyCode.K))
-            rb.AddForce(new Vector2(100, 0), ForceMode2D.Impulse);
         if (jumpAble && Input.GetKeyDown(KeyCode.Space)) //GetKeyDown은 반드시 Update에서 써야한다.
         {
             float wallJumpDirection = 0;
@@ -72,6 +76,8 @@ public class PlayerController : MonoBehaviour
                 isWallJumping = true;
                 wallJumpTimer = wallJumpDuration;
             }
+
+            AudioSource.PlayClipAtPoint(JumpSound, transform.position);
         }
 
         if (isWallJumping)
@@ -107,7 +113,20 @@ public class PlayerController : MonoBehaviour
             //만약 벽 점프가 활성화 된 상태에서 땅에 붙어있지 않다면
         }
         else
-          rb.velocity = vector;
+        {
+            rb.velocity = vector;
+            if(h != 0 && walkTime <= 0 && jumpAble &&!(isWallRight || isWallLeft))
+            {
+                AudioSource.PlayClipAtPoint(FootSound[WalkSound], transform.position);
+                WalkSound++;
+                if(WalkSound >= FootSound.Length)
+                    WalkSound = 0;
+                walkTime = WalkSoundTime;
+            }
+
+            if(walkTime > 0)
+                walkTime -= Time.fixedDeltaTime;
+        }
 
         UpdateJumpAbleStatus();
     }
