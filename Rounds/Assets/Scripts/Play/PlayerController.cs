@@ -214,7 +214,5 @@ public class PlayerController : MonoBehaviour
             isObstacle = true;
             Invoke("Obstacle", 0.1f);
         }
-    }
-
-   
+    }  
 }
