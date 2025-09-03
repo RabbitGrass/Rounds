@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class ArmAndGunController : MonoBehaviour
 {
-    private bool isRight = true;
+    public bool isRight;
     public Transform armTransform;      // 팔 오브젝트
     //public Transform bodyTransform;     // 몸통 중심 (원)
     public float armLength;//0.5      // 팔의 길이
@@ -91,10 +91,11 @@ public class ArmAndGunController : MonoBehaviour
         if (mouseWorldPos.x < gameObject.transform.position.x && isRight)
         {
             // 마우스가 왼쪽 → 반전
-            armRenderer.flipY = true;
-            playerRenderer.flipX = true;
+            //armRenderer.flipY = true;
+            //playerRenderer.flipX = true;
             //Rotate.y = 0;
             //Bounded.transform.localEulerAngles = Rotate;
+            FlipArm();
             gun.y = -0.25f;
             GunTransform.localPosition = gun;
             
@@ -107,10 +108,11 @@ public class ArmAndGunController : MonoBehaviour
         else if(mouseWorldPos.x >= gameObject.transform.position.x && !isRight)
         {
             // 마우스가 오른쪽 → 정방향
-            armRenderer.flipY = false;
-            playerRenderer.flipX = false;
+            //armRenderer.flipY = false;
+            //playerRenderer.flipX = false;
             //Rotate.y = 180;
             //Bounded.transform.localEulerAngles = Rotate;
+            FlipArm();
             gun.y = 0.25f;
             GunTransform.localPosition = gun;
             localShild.x = Mathf.Abs(localShild.x) * -1;
@@ -147,6 +149,14 @@ public class ArmAndGunController : MonoBehaviour
         {
             BulletReload();
         }
+    }
+
+    void FlipArm()
+    {
+        bool flip = !armRenderer.flipY;
+
+        playerRenderer.flipX = flip;
+        armRenderer.flipY = flip;
     }
 
     //탄창 생성

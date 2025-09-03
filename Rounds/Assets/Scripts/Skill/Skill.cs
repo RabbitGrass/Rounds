@@ -26,17 +26,22 @@ public class Skill : MonoBehaviour
     public int ChoicePlayer;
 
     public AudioSource CardSound;
+
+    public GameObject[] Player;
+    public Animator[] playerAni;
     private void Start()
     {
         if (!PlayerPrefs.HasKey("ChoicePlayer"))
         {
             ChoicePlayer = 0;
+            Player[0].SetActive(true);
             isStart = true;
             SkillSetting();
         }
         else
         {
             ChoicePlayer = PlayerPrefs.GetInt("ChoicePlayer");
+            Player[ChoicePlayer].SetActive(true);
         }
 
             baseScale = new Vector3(0.8f, 0.8f, 0.8f);
@@ -54,6 +59,7 @@ public class Skill : MonoBehaviour
             choice++;
             skillCard[choice].transform.localScale = Vector3.one;
             CardSound.Play();
+            playerAni[ChoicePlayer].SetTrigger("isRight");
         }
 
         if (choice > 0 && Input.GetKeyDown(KeyCode.A))
@@ -62,6 +68,7 @@ public class Skill : MonoBehaviour
             choice--;
             skillCard[choice].transform.localScale = Vector3.one;
             CardSound.Play();
+            playerAni[ChoicePlayer].SetTrigger("isLeft");
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && !isChoice)

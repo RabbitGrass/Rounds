@@ -77,7 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1314095905
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f5d942693fc174c42be695c90a8c1a91, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -106,6 +106,8 @@ MonoBehaviour:
   MaxHp: 3
   isShild: 0
   GameMannager: {fileID: 0}
+  hitAudio: {fileID: 0}
+  DamagedAni: {fileID: 0}
 --- !u!50 &6004882216276063926
 Rigidbody2D:
   serializedVersion: 4
@@ -238,7 +240,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1314095905
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}

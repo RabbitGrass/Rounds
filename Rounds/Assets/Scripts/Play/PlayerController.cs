@@ -152,7 +152,8 @@ public class PlayerController : MonoBehaviour
     private void UpdateJumpAbleStatus()
     {
 
-        grounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.01f, groundCheckLayer);
+        grounded = Physics2D.OverlapCircle(groundCheckTransform.position, 0.1f, groundCheckLayer);
+        //grounded = Physics2D.OverlapCapsule(groundCheckTransform.position, new Vector2(0.2f, 0), CapsuleDirection2D.Horizontal, 0f, groundCheckLayer);
         isWallRight = Physics2D.OverlapCapsule(
             wallCheckRight.position,                  // Áß½É
             new Vector2(0.2f, 0.6f),                  // Ä¸½¶ Å©±â (³Êºñ, ³ôÀÌ)

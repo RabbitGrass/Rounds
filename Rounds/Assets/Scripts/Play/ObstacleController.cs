@@ -20,7 +20,6 @@ public class ObstacleController : MonoBehaviour
         if (rb != null)
         {
             Vector2 direction = (collision.transform.position - transform.position).normalized;
-            Debug.Log(direction);
             rb.velocity = Vector2.zero;
             rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
             //rb.velocity = direction * knockbackForce;

@@ -5156,6 +5156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e986b10db3b163547b77756e2438aac6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRight: 1
   armTransform: {fileID: 8905803020788681863}
   armLength: 0.5
   armRenderer: {fileID: 484866932179147866}
