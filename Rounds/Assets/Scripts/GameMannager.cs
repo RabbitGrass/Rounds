@@ -135,8 +135,12 @@ public class GameMannager : MonoBehaviour
 
         if(OWin >= 5 || BWin >= 5)
         {
+            int mute = PlayerPrefs.GetInt("MusicMute");
+            float value = PlayerPrefs.GetFloat("MusicValue");//전체삭제 전 백그라운드 볼륨과 뮤트 여부 가져오기
             Invoke("GameOver", 0.5f);
             PlayerPrefs.DeleteAll(); //모든 게임이 끝났으므로 모든 스킬 및 데이터 초기화
+            PlayerPrefs.SetInt("MusicMute", mute);
+            PlayerPrefs.SetFloat("MusicValue", value); //백그라운드 볼륨 저장
             Time.timeScale = 0.3f;
         }
         else

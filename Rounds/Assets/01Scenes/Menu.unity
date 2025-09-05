@@ -1966,6 +1966,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac110e3fd6d78e4cad71a73538256a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundMute: {fileID: 977933829}
+  SoundValue: {fileID: 722778385}
+  Sound: {fileID: 1626398604}
   SettingAni: {fileID: 873995398}
 --- !u!4 &1484624576
 Transform:
