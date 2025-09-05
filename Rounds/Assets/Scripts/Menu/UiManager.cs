@@ -10,6 +10,8 @@ public class UiManager : MonoBehaviour
     public Slider SoundValue;
     public AudioSource Sound;
 
+    //시연을 위해 만든 거
+    public Toggle VictoryOnly;
     private void Start()
     {
         if (PlayerPrefs.HasKey("MusicValue"))
@@ -50,8 +52,13 @@ public class UiManager : MonoBehaviour
         PlayerPrefs.SetFloat("MusicValue", Sound.volume);
         int i = Random.Range(0, 2);
 
+
+
         PlayerPrefs.SetInt("Player", i);
         PlayerPrefs.Save();
+
+        if (VictoryOnly.isOn)
+            PlayerPrefs.SetInt("VictoryOnly", 1);
 
         SceneManager.LoadScene("Skill");
     }

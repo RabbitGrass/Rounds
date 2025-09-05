@@ -114,7 +114,11 @@ public class GameMannager : MonoBehaviour
         {
             OrangeWinCount[OWin++].gameObject.SetActive(true);
             PlayerPrefs.SetInt("OrangeWinCount", OWin);
-            PlayerPrefs.SetInt("ChoicePlayer", col);
+            if(PlayerPrefs.HasKey("VictoryOnly"))
+                PlayerPrefs.SetInt("ChoicePlayer", 0);
+            else
+                PlayerPrefs.SetInt("ChoicePlayer", col);
+
             Image WinnerCol = Winner.GetComponentInChildren<Image>();
             WinnerCol.color = new Color32(255, 144, 0, 255);
             Text WinnerText = Winner.GetComponentInChildren<Text>();
@@ -125,7 +129,10 @@ public class GameMannager : MonoBehaviour
         {
             BlueWinCount[BWin++].gameObject.SetActive(true);
             PlayerPrefs.SetInt("BlueWinCount", BWin);
-            PlayerPrefs.SetInt("ChoicePlayer", col);
+            if (PlayerPrefs.HasKey("VictoryOnly"))
+                PlayerPrefs.SetInt("ChoicePlayer", 1);
+            else
+                PlayerPrefs.SetInt("ChoicePlayer", col);
             Image WinnerCol = Winner.GetComponentInChildren<Image>();
             WinnerCol.color = new Color32(0, 107, 255, 255);
             Text WinnerText = Winner.GetComponentInChildren<Text>();
@@ -171,7 +178,29 @@ public class GameMannager : MonoBehaviour
     void RoundStart() => gState = GameState.RoundStart;
     void NextRound() => SceneManager.LoadScene("Skill");
 
-    public void MainMenu() => SceneManager.LoadScene("Menu");
+    public void MainMenu()
+    {
+        // BGMManager 있으면 파괴
+        var bgm = FindObjectOfType<BGMManager>();
+        if (bgm != null)
+        {
+            Destroy(bgm.gameObject);
+        }
+
+        SceneManager.LoadScene("Menu");
+    }
+    public void VictoryCheat()
+    {
+        int i = PlayerPrefs.GetInt("Player");
+        if (i > 0)
+            i = 0;
+        else
+            i = 1;
+        OWin = 4;
+        BWin = 4;
+        WhoAreWin(Player[i]);
+        Setting.SetActive(false);
+    }
 
     //게임 종료 옵션
     public void QuitGame()

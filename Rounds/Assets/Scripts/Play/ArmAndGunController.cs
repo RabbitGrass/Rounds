@@ -63,6 +63,9 @@ public class ArmAndGunController : MonoBehaviour
                 bulletCheckY += 0.2f;
         }
 
+        if (!isRight)
+            BulletCheckPos();
+
     }
 
     void Update()
@@ -155,8 +158,8 @@ public class ArmAndGunController : MonoBehaviour
     //{
     //    bool flip = !armRenderer.flipY;
 
-    //    playerRenderer.flipX = !flip;
-    //    armRenderer.flipY = !flip;
+    //    playerRenderer.flipX = flip;
+    //    armRenderer.flipY = flip;
     //}
 
     //ÅºÃ¢ »ý¼º

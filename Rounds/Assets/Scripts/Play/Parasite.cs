@@ -27,7 +27,7 @@ public class Parasite : MonoBehaviour
         if (collision.gameObject.activeSelf)
         {
             HpController hp = collision.gameObject.GetComponent<HpController>();
-            Debug.Log(gameObject.name);
+            //Debug.Log(gameObject.name);
             hp.StartCoroutine(hp.Parasite(dmg, player));
         }
     }

@@ -22,7 +22,6 @@ public class HpController : MonoBehaviour
             MaxHp = PlayerPrefs.GetFloat($"HP{col}");
         }
         HpValue = MaxHp;
-        Debug.Log("MaxHp : " + MaxHp);
     }
 
     public void PlayerHpValue(float dmg)
@@ -41,7 +40,7 @@ public class HpController : MonoBehaviour
             return;
         }
         //AudioSource.PlayClipAtPoint(hitAudio, transform.position, 1f);
-        if (gameObject.activeSelf) {
+        if (gameObject.activeSelf && dmg > 0) {
             DamagedAni.SetTrigger("Damaged");
             hitAudio.Play();
         }
