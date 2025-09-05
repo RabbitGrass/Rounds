@@ -111,6 +111,7 @@ public class PlayerController : MonoBehaviour
         if (isWallJumping && !grounded || isObstacle)
         {
             //만약 벽 점프가 활성화 된 상태에서 땅에 붙어있지 않다면
+            Debug.Log("지금 이 상태");
         }
         else
         {

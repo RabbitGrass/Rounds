@@ -91,11 +91,11 @@ public class ArmAndGunController : MonoBehaviour
         if (mouseWorldPos.x < gameObject.transform.position.x && isRight)
         {
             // 마우스가 왼쪽 → 반전
-            //armRenderer.flipY = true;
-            //playerRenderer.flipX = true;
+            armRenderer.flipY = true;
+            playerRenderer.flipX = true;
             //Rotate.y = 0;
             //Bounded.transform.localEulerAngles = Rotate;
-            FlipArm();
+            //FlipArm();
             gun.y = -0.25f;
             GunTransform.localPosition = gun;
             
@@ -108,11 +108,11 @@ public class ArmAndGunController : MonoBehaviour
         else if(mouseWorldPos.x >= gameObject.transform.position.x && !isRight)
         {
             // 마우스가 오른쪽 → 정방향
-            //armRenderer.flipY = false;
-            //playerRenderer.flipX = false;
+            armRenderer.flipY = false;
+            playerRenderer.flipX = false;
             //Rotate.y = 180;
             //Bounded.transform.localEulerAngles = Rotate;
-            FlipArm();
+            //FlipArm();
             gun.y = 0.25f;
             GunTransform.localPosition = gun;
             localShild.x = Mathf.Abs(localShild.x) * -1;
@@ -151,13 +151,13 @@ public class ArmAndGunController : MonoBehaviour
         }
     }
 
-    void FlipArm()
-    {
-        bool flip = !armRenderer.flipY;
+    //void FlipArm()
+    //{
+    //    bool flip = !armRenderer.flipY;
 
-        playerRenderer.flipX = flip;
-        armRenderer.flipY = flip;
-    }
+    //    playerRenderer.flipX = !flip;
+    //    armRenderer.flipY = !flip;
+    //}
 
     //탄창 생성
     static GameObject BulletCreate(GameObject BulletFactory, GameObject gameObject)

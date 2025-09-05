@@ -88,7 +88,9 @@ public class Skill : MonoBehaviour
                 Invoke("SkillRestart", 1f);
             }
             else
+            {
                 Invoke("StartGame", 2f);
+            }
         }
     }
 
@@ -105,7 +107,9 @@ public class Skill : MonoBehaviour
 
     void StartGame()
     {
-        SceneManager.LoadScene("Stage1");
+        int sceneCount = SceneManager.sceneCountInBuildSettings;//현제 빌드되어있는 씬의 개수 받아오기
+        int rnd = Random.Range(2, sceneCount); //2번서 부터 맵이므로 2번서부터 랜덤으로 숫자
+        SceneManager.LoadScene(rnd);
     }
 
     void SkillSetting()

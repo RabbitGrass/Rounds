@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEditor.Build.Content;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -41,6 +36,8 @@ public class GameMannager : MonoBehaviour
     public Text[] RestartText;
     public int textAlpha = 135;
     private bool ChoiceRestart;
+
+    public GameObject Setting;
     void Start()
     {
         playerCol = PlayerPrefs.GetInt("Player");
@@ -71,6 +68,14 @@ public class GameMannager : MonoBehaviour
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!Setting.activeSelf)
+                Setting.SetActive(true);
+            else
+                Setting.SetActive(false);
+        }
+
         if (gState != GameState.GameOver)
             return; //게임오버 되었을 경우에만 실행
 

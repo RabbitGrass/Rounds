@@ -34,4 +34,9 @@ public class UiManager : MonoBehaviour
         SettingAni.SetBool("isSetting", !isSetting);
 
     }
+
+    public void ExitButton()
+    {
+        Application.Quit();
+    }
 }
